@@ -1,6 +1,7 @@
-if ! type "brew" > /dev/null; then
+if ! type "brew" &> /dev/null; then
   # brew not installed. exit silently
-  exit 0
+  echo "brew not found?"
+  return
 fi
 
 # Use coreutils gnubins first in PATH to override built-in macOS versions which

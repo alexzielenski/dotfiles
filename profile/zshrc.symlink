@@ -1,5 +1,11 @@
 # zshrc runs for interactive shells after zprofile
-source "$HOME/dotfiles/profile/common_nonlogin.sh"
+source "$HOME/dotfiles/profile/common_env.sh"
+
+if [[ -o login ]]; then
+  source "$DOTFILES/profile/common_login.sh"
+fi
+
+source "$DOTFILES/profile/common_nonlogin.sh"
 
 for rcfile in $DOTFILES/*/rc_zsh.sh; do
 	source $rcfile

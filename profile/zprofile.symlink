@@ -1,2 +1,1 @@
-# zprofile runs for login shells after zenv and before zshrc
-source "$HOME/dotfiles/profile/common_login.sh"
+# Do nothing

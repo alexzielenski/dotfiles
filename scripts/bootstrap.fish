@@ -72,6 +72,8 @@ end
 link_file $DOTFILES/fisher/plugins $__fish_config_dir/fish_plugins backup
 	or abort plugins
 
+fisher update
+
 # Hook into fish's startup sequence
 link_file $DOTFILES/profile/fish.fish $HOME/.config/fish/conf.d/dotfile.fish backup
 	or abort "fish config"
@@ -114,9 +116,6 @@ end
 
 if test (which fish) = $SHELL
 	success 'dotfiles installed/updated!'
-	exit 0
-else
-	echo $SHELL
 	exit 0
 end
 
