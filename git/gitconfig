@@ -1,0 +1,51 @@
+[alias]
+	co = checkout
+	count = shortlog -sn
+	g = grep --break --heading --line-number
+	gi = grep --break --heading --line-number -i
+	changed = show --pretty=\"format:\" --name-only
+	fm = fetch-merge
+	please = push --force-with-lease
+	commit = commit -s
+	commend = commit -s --amend --no-edit
+	lt = log --tags --decorate --simplify-by-decoration --oneline
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = true
+[core]
+	excludesfile = ~/dotfiles/git/global.gitignore
+	compression = -1
+	autocrlf = input
+	whitespace = trailing-space,space-before-tab
+	precomposeunicode = true
+[advice]
+	addEmptyPathspec = false
+# [gpg]
+	# program = gpg
+[help]
+	autocorrect = 1
+[diff]
+	tool = diffmerge
+[grep]
+	extendRegexp = true
+	lineNumber = true
+[push]
+	default = simple
+[submodule]
+	fetchJobs = 4
+# [commit]
+# 	gpgsign = true
+# [tag]
+# 	gpgsign = true
+[log]
+	showSignature = false
+[init]
+    defaultBranch = main
+[format]
+	signOff = true
+
+# Used to inform our installation script if this is already set up
+[dotfiles]
+    managed = true
