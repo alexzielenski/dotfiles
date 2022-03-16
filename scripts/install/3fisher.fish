@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 if type -q fisher
-    info "fisher is already installed"
+    fisher update
     exit 0
 end
 
