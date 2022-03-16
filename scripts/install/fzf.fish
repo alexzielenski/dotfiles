@@ -1,0 +1,1 @@
+../../fzf/install.fish
