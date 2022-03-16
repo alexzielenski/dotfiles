@@ -1,1 +1,1 @@
-eval "$(starship init $(basename $SHELL))"
+eval "$(starship init $(basename $(ps -p $$ -oargs=)))"
