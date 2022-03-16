@@ -1,0 +1,6 @@
+# zshrc runs for interactive shells after zprofile
+source "$HOME/dotfiles/profile/common_nonlogin.sh"
+
+for rcfile in $DOTFILES/*/rc_zsh.sh; do
+	source $rcfile
+done
