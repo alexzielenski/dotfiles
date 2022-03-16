@@ -1,4 +1,5 @@
 # zshrc runs for interactive shells after zprofile
+shell="zsh"
 source "$HOME/dotfiles/profile/common_env.sh"
 
 if [[ -o login ]]; then
