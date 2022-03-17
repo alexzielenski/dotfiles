@@ -6,13 +6,17 @@ end
 
 set -x shell "fish"
 
-if status --is-login
-    set -x isloginshell 1
-else
-    set -x isloginshell 0
+replay source "$HOME/dotfiles/profile/common_env.sh"
+
+for rcfile in $DOTFILES/*/env_fish.fish
+	source $rcfile
 end
 
-replay source $HOME/dotfiles/profile/common.sh
+if status --is-login
+  replay source "$DOTFILES/profile/common_login.sh"
+end
+
+replay source "$DOTFILES/profile/common_nonlogin.sh"
 
 for rcfile in $DOTFILES/*/rc_fish.fish
 	source $rcfile
