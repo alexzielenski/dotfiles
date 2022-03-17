@@ -77,7 +77,7 @@ link_file $DOTFILES/fisher/plugins $__fish_config_dir/fish_plugins backup
 	or abort plugins
 
 # Hook into fish's startup sequence
-link_file $DOTFILES/profile/fish.fish $HOME/.config/fish/conf.d/dotfile.fish backup
+link_file $DOTFILES/profile/fish.fish $HOME/.config/fish/config.fish backup
 	or abort "fish config"
 
 # link_file $DOTFILES/htop/htoprc $HOME/.config/htop/htoprc backup

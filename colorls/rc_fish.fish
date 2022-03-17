@@ -1,9 +1,4 @@
-#!/usr/bin/env fish
-
-if not status --is-interactive
-    return
-end
-
-if type -q colorls
+# only alias ls in interactive mode
+if status --is-interactive
     alias ls="colorls"
 end
