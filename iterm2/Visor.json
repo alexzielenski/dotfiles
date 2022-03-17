@@ -391,11 +391,11 @@
   "Transparency" : 0.1444783961519282,
   "HotKey Activated By Modifier" : false,
   "Background Color" : {
-    "Red Component" : 0.062745101749897003,
+    "Red Component" : 0.0,
     "Color Space" : "sRGB",
-    "Blue Component" : 0.086274512112140656,
+    "Blue Component" : 0.0,
     "Alpha Component" : 1,
-    "Green Component" : 0.070588238537311554
+    "Green Component" : 0.0
   },
   "Screen" : -1,
   "Initial Use Transparency" : true,
