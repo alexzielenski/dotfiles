@@ -80,6 +80,9 @@ link_file $DOTFILES/fisher/plugins $__fish_config_dir/fish_plugins backup
 link_file $DOTFILES/profile/fish.fish $HOME/.config/fish/config.fish backup
 	or abort "fish config"
 
+link_file $DOTFILES/profile/env.fish $HOME/.config/fish/conf.d/0dotfilesenv.fish backup
+	or abort "fish env config"
+
 # link_file $DOTFILES/htop/htoprc $HOME/.config/htop/htoprc backup
 # 	or abort htoprc
 # link_file $DOTFILES/ssh/config.dotfiles $HOME/.ssh/config.dotfiles backup
