@@ -1,5 +1,4 @@
 format = """\
-$line_break\
 $username\
 $hostname\
 $localip\
@@ -57,7 +56,7 @@ $git_status\
 """
 
 [cmd_duration]
-format = '\[[⏱  $duration]($style)\]'
+format = '\[[⌛ $duration]($style)\]'
 disabled = false
 min_time = 50
 
