@@ -96,6 +96,19 @@ link_file $DOTFILES/profile/env.fish $HOME/.config/fish/conf.d/0dotfilesenv.fish
 # link_file $DOTFILES/yamllint/config $HOME/.config/yamllint/config backup
 # 	or abort yamllint
 
+# Remove symlinks from older versions of the tool that might be left behind
+# These should not be files that might have been backed up
+set oldPaths \
+	"$HOME/Library/Application Support/iTerm2/DynamicProfiles/Visor.json" \
+	"$HOME/Library/Application Support/iTerm2/DynamicProfiles/Default.json"
+
+for p in $oldPaths
+	if test -L $p; or test -e $p
+		rm $p
+			or abort "failed to remove old file"
+	end
+end
+
 ################################################################################
 # Install Completions?
 ################################################################################
