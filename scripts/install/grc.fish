@@ -1,3 +1,3 @@
 #!/usr/bin/env/fish
 
-# brew install -q grc
+brew install -q grc
