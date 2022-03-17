@@ -4,5 +4,3 @@
 if not type -q colorls
     gem install colorls
 end
-
-alias --save ls="colorls"
