@@ -126,7 +126,7 @@
       "Non Ascii Font": "Monaco 12",
       "Vertical Spacing": 1,
       "Use Bold Font": true,
-      "Option Key Sends": 0,
+      "Option Key Sends": 2,
       "Selected Text Color": {
         "Red Component": 1,
         "Color Space": "sRGB",
