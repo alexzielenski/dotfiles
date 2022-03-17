@@ -1,12 +1,13 @@
 # zshrc runs for interactive shells after zprofile
 shell="zsh"
-source "$HOME/dotfiles/profile/common_env.sh"
 
 if [[ -o login ]]; then
-  source "$DOTFILES/profile/common_login.sh"
+  export isloginshell=1
+else
+  export isloginshell=0
 fi
 
-source "$DOTFILES/profile/common_nonlogin.sh"
+source $HOME/dotfiles/profile/common.sh
 
 for rcfile in $DOTFILES/*/rc_zsh.sh; do
 	source $rcfile
