@@ -27,12 +27,11 @@ fi
 currentver="$(fish -v)"
 requiredver="3.4.0"
 if [ "$(printf '%s\n' "$requiredver" "$currentver" | sort -V | head -n1)" = "$requiredver" ]; then 
-    echo "Fish at least v${requiredver}"
+    echo "✓ fish is at least v${requiredver}"
 else
     echo "You must have at least fish version ${requiredver}. Please upgrade."
     exit 1
 fi
-
 
 if ! command -v zsh &> /dev/null
 then
