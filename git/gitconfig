@@ -49,3 +49,6 @@
 # Used to inform our installation script if this is already set up
 [dotfiles]
     managed = true
+
+[include]
+	path = ~/dotfiles/git/delta.gitconfig
