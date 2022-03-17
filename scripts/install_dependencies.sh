@@ -25,7 +25,7 @@ fi
 
 #todo make sure fish at least 3.4.0
 currentver="$(fish -v)"
-requiredver="3.4.0"
+requiredver="fish, version 3.4.0"
 if [ "$(printf '%s\n' "$requiredver" "$currentver" | sort -V | head -n1)" = "$requiredver" ]; then 
     echo "✓ fish is at least v${requiredver}"
 else
