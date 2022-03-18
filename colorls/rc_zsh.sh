@@ -3,7 +3,7 @@ if [[ $- == *i* ]]; then
     alias ls="colorls"
 
     function tx {
-        colorls --sd --gs --tree=$1 "${@:2}"
+        colorls --sd --gs --color --tree=$1 "${@:2}"
     }
 
     alias t="tx 1"
