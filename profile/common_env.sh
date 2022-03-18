@@ -1,26 +1,15 @@
-export DOTFILES=$HOME/dotfiles
-
-# Figure out what shell we are under
-if [[ -z "${shell}" ]]; then
-    if [[ ! -z "${BASH}" ]]; then
-        shell="bash"
-    else
-        shellstring=$(ps -ocomm= -p $$)
-        if grep -q "zsh" <<< "$shellstring"; then
-            shell="zsh"
-        fi
-
-        unset shellstring
-    fi
-
-    if [[ -z "${shell}" ]]; then
-        echo "$BASH_SOURCE: could not identify shell"
-        exit 1
-    fi
+if [[ -z "$DOTFILES" ]]; then
+    echo "common_env.sh: could not determine DOTFILES dir"
+    exit 1
 fi
 
-if test -f "$HOME/dotfiles/config.sh"; then
-    source $HOME/dotfiles/config.sh
+if [[ -z "${shell}" ]]; then
+    echo "common_env.sh: 'shell' envar is not defined. it must be defined before sourcing this file."
+    exit 1
+fi
+
+if test -f "$DOTFILES/config.sh"; then
+    source $DOTFILES/config.sh
 fi
 
 # Add brew prefix to PATH
@@ -31,7 +20,7 @@ if [[ -z "$BREW_PREFIX" ]]; then
 fi
 
 if [[ -z "$BREW_PREFIX" ]]; then
-    echo "$BASH_SOURCE: could not locate brew. Do you need to export a custom BREW_PREFIX in $DOTFILES/config.sh ?"
+    echo "$DOTFILES/profile/common_env: could not locate brew. Do you need to export a custom BREW_PREFIX in $DOTFILES/config.sh ?"
     exit 1
 else
     export PATH=$BREW_PREFIX/bin:$BREW_PREFIX/sbin:$PATH

@@ -1,8 +1,19 @@
 #!/usr/bin/env fish
 set -l DIR (dirname (status --current-filename))
-set -x DOTFILES "$HOME/dotfiles"
+set -x DOTFILES (realpath (dirname $DIR))
+
+################################################################################
+# Load Configuration
+################################################################################
+# Some configurable variables are stored in install_env to make it easier to
+# change settings
 
 source "$DIR/install_env.fish"
+
+################################################################################
+# Define Installation Framework
+################################################################################
+# Library functions used by the installers
 
 function info
 	echo [(set_color --bold) ' .. ' (set_color normal)] $argv
@@ -26,6 +37,7 @@ function abort
 end
 
 function on_exit -p %self
+	#!TODO: Restore backups of all created links?
 	if not contains $argv[3] 0
 		echo [(set_color --bold red) FAIL (set_color normal)] "Couldn't setup dotfiles, please open an issue at https://github.com/alexzielenki/dotfiles"
 	end
@@ -40,10 +52,6 @@ function test_app
 	end
 	return  1
 end
-
-################################################################################
-# Link Dotfiles
-################################################################################
 
 function link_file -d "links a file keeping a backup"
 	set old $argv[1]
@@ -67,37 +75,13 @@ function link_file -d "links a file keeping a backup"
 		or abort "could not link $old to $new"
 end
 
-for src in $DOTFILES/*/*.symlink
-    link_file $src "$HOME/.$(basename $src .symlink)" backup
-        or abort 'failed to link config file'
-end
-
-# Symlink fisher plugin list into dotfiles
-link_file $DOTFILES/fisher/plugins $__fish_config_dir/fish_plugins backup
-	or abort plugins
-
-# Hook into fish's startup sequence
-link_file $DOTFILES/profile/fish.fish $HOME/.config/fish/config.fish backup
-	or abort "fish config"
-
-link_file $DOTFILES/profile/env.fish $HOME/.config/fish/conf.d/0dotfilesenv.fish backup
-	or abort "fish env config"
-
-# link_file $DOTFILES/htop/htoprc $HOME/.config/htop/htoprc backup
-# 	or abort htoprc
-# link_file $DOTFILES/ssh/config.dotfiles $HOME/.ssh/config.dotfiles backup
-# 	or abort ssh-config
-# link_file $DOTFILES/ssh/rc $HOME/.ssh/rc backup
-# 	or abort ssh-rc
-# link_file $DOTFILES/kitty/kitty.conf $HOME/.config/kitty/kitty.conf backup
-# 	or abort kitty
-# link_file $DOTFILES/nvim/config $HOME/.config/nvim backup
-# 	or abort nvim
-# link_file $DOTFILES/yamllint/config $HOME/.config/yamllint/config backup
-# 	or abort yamllint
-
+################################################################################
+# Remove old artifacts
+################################################################################
 # Remove symlinks from older versions of the tool that might be left behind
 # These should not be files that might have been backed up
+# (if they were, those backup files need additional logic to restore backup)
+
 set oldPaths \
 	"$HOME/Library/Application Support/iTerm2/DynamicProfiles/Visor.json" \
 	"$HOME/Library/Application Support/iTerm2/DynamicProfiles/Default.json"
@@ -127,6 +111,17 @@ for installer in $DIR/install/*.fish
 		and success $installer
 		or abort $installer
 end
+
+################################################################################
+# Install .symlinks
+################################################################################
+# Done last to avoid any issues if script exits early
+
+for src in $DOTFILES/*/*.symlink
+    link_file $src "$HOME/.$(basename $src .symlink)" backup
+        or abort 'failed to link config file'
+end
+
 
 ################################################################################
 # Add fish to list of shells and set as default

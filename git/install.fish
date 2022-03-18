@@ -1,6 +1,8 @@
 #!/usr/bin/env fish
 
-git config --global core.excludesfile ~/dotfiles/global.gitignore
+# The path to the global gitignore must be absolute so it cannot go in
+# gitconfig as relative path. Write it into user's global gitconfig settings
+git config --global core.excludesfile $DOTFILES/git/global.gitignore
 
 # Set up git username and email
 function setup_gitconfig
@@ -21,10 +23,8 @@ function setup_gitconfig
 			or abort 'failed to setup git user name and email'
 	end
 
-	# include the gitconfig.local file
-	# finally make git knows this is a managed config already, preventing later
-	# overrides by this script
-	git config --global include.path ~/dotfiles/git/gitconfig
+	# Point user's ~/.gitconfig to include our dotfiles config
+	git config --global include.path $DOTFILES/git/gitconfig
 		or abort 'failed to setup git'
 end
 

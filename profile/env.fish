@@ -1,6 +1,11 @@
 # Symlinked to beginning of fish's conf.d directory
-# Set PATH and such early on
-set -x DOTFILES "$HOME/dotfiles"
+
+# This runs the risk of not working when this file is a symlink.
+# So don't make this file a symlink ok
+#
+# Don't worry about realpath not being available on macOS, since fish
+# has a compatibility layer for that case.
+set -x DOTFILES "$(dirname (dirname (realpath (status --current-filename))))"
 
 if not type -q replay
     return
@@ -8,7 +13,7 @@ end
 
 set -x shell "fish"
 
-replay source "$HOME/dotfiles/profile/common_env.sh"
+replay source "$DOTFILES/profile/common_env.sh"
 
 for rcfile in $DOTFILES/*/env_fish.fish
 	source $rcfile

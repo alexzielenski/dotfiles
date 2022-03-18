@@ -1,7 +1,17 @@
 # zshrc runs for interactive shells after zprofile
-shell="zsh"
 
-source "$HOME/dotfiles/profile/common_env.sh"
+# inform helper scripts the shell without doing any crazy magic
+# alternative to this is something complicated to detect in common_env.sh
+export shell="zsh"
+
+# Use cancerous zsh syntax to get current file path. I dont know enough about
+# zsh or care enough to know about this busted syntax to know if this gives
+# an absolute path or handles symlinks (which it must for correctness).
+export DOTFILES="$(dirname $(dirname ${${(%):-%x}:A}))"
+
+# use zsh's cancer to refer to relative file
+# common_env defines $DOTFILES used everywhere else
+source "$DOTFILES/profile/common_env.sh"
 
 for rcfile in $DOTFILES/*/env_zsh.sh; do
 	source $rcfile
@@ -16,5 +26,3 @@ source "$DOTFILES/profile/common_nonlogin.sh"
 for rcfile in $DOTFILES/*/rc_zsh.sh; do
 	source $rcfile
 done
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

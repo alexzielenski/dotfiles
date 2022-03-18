@@ -1,7 +1,7 @@
-# Symlinked from config.fish
-set -x DOTFILES "$HOME/dotfiles"
+# Symlinked from .config/fish/config.fish
 
 if not type -q replay
+    echo "fish.fish: replay package is not installed"
     return
 end
 

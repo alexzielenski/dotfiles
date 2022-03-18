@@ -15,7 +15,6 @@
 	branch = auto
 	ui = true
 [core]
-	excludesfile = ~/dotfiles/git/global.gitignore
 	compression = -1
 	autocrlf = input
 	whitespace = trailing-space,space-before-tab
@@ -51,4 +50,4 @@
     managed = true
 
 [include]
-	path = ~/dotfiles/git/delta.gitconfig
+	path = delta.gitconfig
