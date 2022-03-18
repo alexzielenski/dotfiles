@@ -1,1 +1,1 @@
-echo "Welcome!"
+echo "Welcome to $shell!"
