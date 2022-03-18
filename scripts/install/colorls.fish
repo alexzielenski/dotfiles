@@ -1,1 +1,0 @@
-../../colorls/install.fish

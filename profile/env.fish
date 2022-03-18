@@ -7,11 +7,17 @@
 # has a compatibility layer for that case.
 set -x DOTFILES "$(dirname (dirname (realpath (status --current-filename))))"
 
+if status --is-interactive
+    set -x interactive 1
+else
+    set -x interactive 0
+end
+
 if not type -q replay
     return
 end
 
-set -x shell "fish"
+set shell "fish"
 
 replay source "$DOTFILES/profile/common_env.sh"
 
