@@ -70,6 +70,7 @@
     "Green Component" : 0.9268307089805603
   },
   "BM Growl" : true,
+  "AWDS Window Directory" : "",
   "Ansi 3 Color" : {
     "Red Component" : 0.89019608497619629,
     "Color Space" : "sRGB",
@@ -96,6 +97,7 @@
   },
   "Unlimited Scrollback" : true,
   "Custom Command" : "No",
+  "AWDS Tab Option" : "Recycle",
   "HotKey Key Code" : 43,
   "Keyboard Map" : {
     "0xf700-0x260000" : {
@@ -360,6 +362,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0
   },
+  "AWDS Pane Directory" : "",
   "Blur" : false,
   "Normal Font" : "MesloLGLDZNerdFontCompleteM-Regular 12",
   "Vertical Spacing" : 1,
@@ -371,6 +374,8 @@
     "Green Component" : 1
   },
   "Space" : -1,
+  "AWDS Tab Directory" : "",
+  "AWDS Pane Option" : "Recycle",
   "HotKey Window AutoHides" : true,
   "Command" : "",
   "Terminal Type" : "xterm-256color",
@@ -404,6 +409,7 @@
   "Screen" : -1,
   "Initial Use Transparency" : true,
   "HotKey Characters Ignoring Modifiers" : ",",
+  "AWDS Window Option" : "No",
   "Non Ascii Font" : "Monaco 12",
   "Ansi 13 Color" : {
     "Red Component" : 0.85882353782653809,
@@ -425,7 +431,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.3803921639919281
   },
-  "Custom Directory" : "No"
+  "Custom Directory" : "Advanced"
 },
 {
   "Working Directory" : "\/Users\/Alex",
