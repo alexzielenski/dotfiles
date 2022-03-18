@@ -68,7 +68,7 @@ function link_file -d "links a file keeping a backup"
 end
 
 for src in $DOTFILES/*/*.symlink
-    link_file $src $HOME/.(basename $src .symlink) backup
+    link_file $src "$HOME/.$(basename $src .symlink)" backup
         or abort 'failed to link config file'
 end
 
