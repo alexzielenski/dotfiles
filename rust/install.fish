@@ -12,4 +12,4 @@ end
 
 
 replay source $DOTFILES/rust/rc.sh
-rustup update
+rustup update 1> /dev/null

@@ -4,10 +4,9 @@
 link_file $DOTFILES/fisher/plugins $__fish_config_dir/fish_plugins backup
 	or abort plugins
 
-if type -q fisher
-    fisher update
-    exit 0
+if not type -q fisher
+    curl -sL https://git.io/fisher | source
 end
 
-curl -sL https://git.io/fisher | source
-fisher update
+fisher update 1> /dev/null
+    or abort "failed fisher update"
