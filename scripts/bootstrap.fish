@@ -1,5 +1,5 @@
 #!/usr/bin/env fish
-set -l DIR (dirname (status --current-filename))
+set -l DIR (realpath (dirname (status --current-filename)))
 set -x DOTFILES (realpath (dirname $DIR))
 
 ################################################################################
