@@ -61,6 +61,7 @@ of useful things set up.
 
 | Name                    | Description                                        |
 |-------------------------|----------------------------------------------------|
+| [asdf](#asdf)           | general-purpose version manager                    |
 | [coreutils](#coreutils) | GNU command line utilities                         |
 | [bat](#bat)             | `cat` replacement with syntax highlighting &  more |
 | [exa](#exa)             | more readable `ls`                                 |
@@ -87,7 +88,6 @@ of useful things set up.
 | `packages` | `brew leaves \| xargs -n1 brew desc`                     | brew |
 
 ## Installed Plugins
-
 ### Fish
 
 | Name                                  | Description                          |
@@ -124,6 +124,20 @@ I always forget my hotkeys.
 | Ctrl-E     | iterm     | cursor move to end of prompt                        |
 
 ## Package Reference
+
+### asdf
+https://asdf-vm.com
+
+asdf exists because there are too many different version nmanagers all with
+different arguments. ASDF unifies them (including version installation) all
+under one nice CLI interface which works without touching your filesystem
+(using aliases).
+
+The following asdf plugins are configured:
+
+| Command   | Source                                                           |
+| Ruby      | https://github.com/asdf-vm/asdf-ruby.git                         |
+| Python    | https://github.com/danhper/asdf-python.git                       |
 
 ### coreutils
 https://formulae.brew.sh/formula/coreutils
