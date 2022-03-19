@@ -1,9 +1,9 @@
 {
 "Profiles": [
 {
-  "Working Directory" : "\/Users\/Alex",
+  "Working Directory" : "",
   "Prompt Before Closing 2" : false,
-  "Dynamic Profile Filename" : "\/Users\/zielenski\/Library\/Application Support\/iTerm2\/DynamicProfiles\/DotfilesDefault.json",
+  "Dynamic Profile Filename" : "",
   "Selected Text Color" : {
     "Red Component" : 1,
     "Color Space" : "sRGB",
@@ -329,7 +329,7 @@
   },
   "Name" : "DotfilesDefault",
   "Blinking Cursor" : true,
-  "Guid" : "063DD4AA-494E-4E82-9E79-B1F18726E227",
+  "Guid" : "DotfilesDefault",
   "Idle Code" : 0,
   "Ansi 10 Color" : {
     "Red Component" : 0.33725491166114807,
@@ -434,9 +434,9 @@
   "Custom Directory" : "Advanced"
 },
 {
-  "Working Directory" : "\/Users\/Alex",
+  "Working Directory" : "",
   "Prompt Before Closing 2" : false,
-  "Dynamic Profile Filename" : "\/Users\/zielenski\/Library\/Application Support\/iTerm2\/DynamicProfiles\/DotfilesDefault.json",
+  "Dynamic Profile Filename" : "",
   "Selected Text Color" : {
     "Red Component" : 1,
     "Color Space" : "sRGB",
@@ -760,7 +760,7 @@
   },
   "Name" : "Hotkey Window",
   "Blinking Cursor" : true,
-  "Guid" : "22C4DCBD-44DA-4576-937B-AA2BDCC75EF9",
+  "Guid" : "DotfilesVisor",
   "Idle Code" : 0,
   "Ansi 10 Color" : {
     "Red Component" : 0.33725491166114807,

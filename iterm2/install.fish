@@ -15,9 +15,17 @@ case Darwin
 	if set -q config || test -z config
 		set config "$HOME/.config"
 	end
+
 	link_file $DOTFILES/iterm2/Profiles.json "$config/iterm2/AppSupport/DynamicProfiles/DotfilesDefault.json" backup
         or abort 'failed to link visor profile'
 
-	# Unsure how to set our profile as default from CLI
+	# our profile as default from CLI
+	defaults write com.googlecode.iterm2 "Default Bookmark Guid" -string "DotfilesDefault"
+
 	# Unsure how to set iterm2 as default terminal from CLI
+	
+
+	# Set iterm theme to minimal
+	# thanks justin0a0
+	defaults write com.googlecode.iterm2 TabStyleWithAutomaticOption -int 5
 end
