@@ -6,7 +6,9 @@ Repository of my dotfiles configuration for personal usage.
 
 1. Clone this repo to `~/dotfiles`
 2. In Terminal, `cd ~/dotfiles`
-3. If on new macOS install, try out `scripts/platform/macos/defaults.sh` to set a few comfortable macOS defaults.
+3. If on new macOS install, try out `scripts/platform/macos/defaults.sh` to set
+    a few comfortable macOS defaults.
+
     Note: It is not easy to revert this
 4. Run `scripts/bootstrap.sh` to install dependencies and link dotfiles
 
@@ -14,26 +16,32 @@ Repository of my dotfiles configuration for personal usage.
 
 Some notes on non-obvious things going on behind the scenes in this repo
 
-1. `scripts/bootstrap.sh` and `bootstrap.fish` run every script in `scripts/install`.
+1. `scripts/bootstrap.sh` and `bootstrap.fish` run every script in
+    `scripts/install`.
 Some are symlinked from elsewhere in the repo to keep things together and tidy.
 2. Each of fish and zsh get similar environments. This is due to dotfiles trying
     to ensure they both load consistently:
     - Fish: `scripts/bootstrap.fish` creates the following symlinks:
         1. `~/.config/fish/config.fish` is symlinked to `profile/fish.fish`
-        2. `~/.config/fish/conf.d/000dotfilesenv.fish` is symlinked to `profile/env.fish`
-        3. this is done to make environment vars available to the fish plugins which load before `config.fish`.
-    - Zsh: `~/.zshrc`, `~/.zprofile`, `~/.zshenv`, are all symlinked into `profile/*.symlink` by `scripts/bootstrap.fish`
+        2. `~/.config/fish/conf.d/000dotfilesenv.fish` is symlinked to
+            `profile/env.fish`
+        3. this is done to make environment vars available to the fish plugins
+            which load before `config.fish`.
+    - Zsh: `~/.zshrc`, `~/.zprofile`, `~/.zshenv`, are all symlinked into
+    `profile/*.symlink` by `scripts/bootstrap.fish`
 3. Startup scripts define `$shell` as `fish` or `zsh`
 4. In each supported shell as part of startup of new shells, each subfolder will
     have its `env.sh` run and then  `env_$shell.(sh/fish)` will
     be run, depending on the shell.
 
-    This is controlled by `profile/common_env.sh`, `profile/env.fish`, and `profile/zshrc.symlink`.
+    This is controlled by `profile/common_env.sh`, `profile/env.fish`, and
+    `profile/zshrc.symlink`.
 5. In each supported shell at the END of startup for all environments,
     each subfolder will have its `rc.sh` run and then `rc_$shell.(sh/fish)` will
     be run, depending on the shell.
 
-    This is controlled by `profile/common_env.sh`, `profile/env.fish`, and `profile/zshrc.symlink`.
+    This is controlled by `profile/common_env.sh`, `profile/env.fish`, and
+    `profile/zshrc.symlink`.
 
 # Caveats
 
@@ -67,14 +75,16 @@ of useful things set up.
 
 ## Installed Aliases
 
-| Name  | Description                                                          |
-|-------|----------------------------------------------------------------------|
-| `ls`  | `exa --icons --color=always --git --group-directories-first`         |
-| `t`   | `ls -tree -L=1`                                                      |
-| `tt`  | `t -L=2`                                                             |
-| `ttt` | `t -L=3`                                                             |
-| `tttt`| `t -L=4`                                                             |
-| `gs`  | `git status -s`                                                      |
+| Name       | Description                                              | Folder |
+|------------|----------------------------------------------------------|------|
+| `ls`       | `exa --icons --color=always --group-directories-first`   | exa  |
+| `ll`       | `ls -l --git`                                            | exa  |
+| `t` | `ll -T --no-permissions --no-user --no-time --no-filesize -L=1` | exa  |
+| `tt`       | `t -L=2`                                                 | exa  |
+| `ttt`      | `t -L=3`                                                 | exa  |
+| `tttt`     | `t -L=4`                                                 | exa  |
+| `gs`       | `git status -s`                                          | git  |
+| `packages` | `brew leaves \| xargs -n1 brew desc`                     | brew |
 
 ## Installed Plugins
 
@@ -215,7 +225,8 @@ https://github.com/ajeetdsouza/zoxide
 
 zoxide is a **smarter cd command**, inspired by z and autojump.
 
-It remembers which directories you use most frequently, so you can "jump" to them in just a few keystrokes.
+It remembers which directories you use most frequently, so you can "jump" to
+them in just a few keystrokes.
 
 zoxide works on all major shells.
 
@@ -231,5 +242,5 @@ z -                # cd into previous directory
 
 zi foo             # cd with interactive selection (using fzf)
 
-z foo<SPACE><TAB>  # show interactive completions (zoxide v0.8.0+, bash 4.4+/fish/zsh only)
+z foo<SPACE><TAB>  # show interactive completions
 ```

@@ -1,18 +1,13 @@
-exaPrefix="exa --icons --color=always --git --group-directories-first"
-tx="$exaPrefix --long --no-permissions --no-user --no-time --no-filesize --tree --level"
-
-alias t="$tx 1"
-alias tt="$tx 2"
-alias ttt="$tx 3"
-alias tttt="$tx 4"
-
 if [[ $interactive == 1 ]];then
-    alias ls="$exaPrefix"
+    alias ls="exa --icons --color-scale --color=always --git --group-directories-first"
+
+    alias ll="ls -l --git"
+    alias td="ll --tree --git-ignore --no-permissions --no-user --no-time --no-filesize --level"
+    alias t="td 1"
+    alias tt="td 2"
+    alias ttt="td 3"
+    alias tttt="td 4"
 fi
-
-unset exaPrefix
-unset tx
-
 
 extensionStyles=(
     '*.xyz=37;41'
