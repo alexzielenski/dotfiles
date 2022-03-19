@@ -9,21 +9,21 @@ if [[ $interactive == 1 ]];then
     alias tttt="td 4"
 fi
 
-extensionStyles=(
-    '*.xyz=37;41'
-    '*.ts=34'
-)
+# extensionStyles=(
+#     '*.xyz=37;41'
+#     '*.ts=34'
+# )
 
-for i in $extensionStyles;do
-#   export LS_COLORS=$i:$LS_COLORS
-    echo $i
-done
+# for i in $extensionStyles;do
+# #   export LS_COLORS=$i:$LS_COLORS
+#     echo $i
+# done
 
-attrStyles=(
-    "da=1;34"
-)
+# attrStyles=(
+#     "da=1;34"
+# )
 
-for i in $attrStyles;do
-#   export EXA_COLORS=$i:$EXA_COLORS
-    echo $i
-done
+# for i in $attrStyles;do
+# #   export EXA_COLORS=$i:$EXA_COLORS
+#     echo $i
+# done
