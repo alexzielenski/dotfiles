@@ -136,9 +136,6 @@
 // GOLANG
 ////////////////////////////////////////////////////////////////////////////////
 
-    "[go]": {
-        "editor.formatOnSave": false
-    },
     "gopls": {
         "ui.semanticTokens": true
     },
