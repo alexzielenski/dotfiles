@@ -1,0 +1,29 @@
+[
+    // ALT+WASD keyboad navigation of the various vscode split panes
+    {
+        "key": "alt+a",
+        "command": "workbench.action.navigateLeft"
+    },
+    {
+        "key": "alt+a",
+        "command": "workbench.action.terminal.focusPreviousPane",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+d",
+        "command": "workbench.action.navigateRight"
+    },
+    {
+        "key": "alt+d",
+        "command": "workbench.action.terminal.focusNextPane",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+w",
+        "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "alt+s",
+        "command": "workbench.action.navigateDown"
+   }
+]
