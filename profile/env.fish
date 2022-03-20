@@ -17,9 +17,9 @@ if not type -q replay
     return
 end
 
-set shell "fish"
+set -x shell "fish"
 
-replay source "$DOTFILES/profile/common_env.sh"
+replay "source $DOTFILES/profile/common_env.sh"
 
 for rcfile in $DOTFILES/*/env_fish.fish
 	source $rcfile
