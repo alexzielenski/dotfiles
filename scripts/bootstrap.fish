@@ -63,6 +63,9 @@ function link_file -d "links a file keeping a backup"
 		if test "$newf" = "$old"
 			success "skipped $old"
 			return
+		else if test -l $new and not string match "^$DOTFILES/" "$newf"
+			# Don't backup symlinks which pointed into here
+			rm $new
 		else
 			mv $new $new.$backup
 				and success moved $new to $new.$backup
@@ -75,23 +78,54 @@ function link_file -d "links a file keeping a backup"
 		or abort "could not link $old to $new"
 end
 
+# used to remove link files which formerly were installed by this scipt
+function cleanup_old_link
+	set old $argv[1]
+	set new $argv[2]
+	set backup $argv[3]
+
+	if test -f $old
+		abort "cleanup_old_link called with a non-broken link. this is a bug"
+	end
+
+	if test -e $new
+		# Not interested in cleaning up live links
+		return
+	end
+
+	# remove the symlink if it points into where we think it points
+	if test -L $new
+		set newf "$(readlink "$new")"
+
+		if test "$newf" = $old
+			rm $new
+				and success "removed old symlink $newf -> $old"
+				or abort "could not remove old symlink $new"
+
+			# restore backup if it exists
+			if test -e $new.$backup
+				mv $new.$backup $new
+					and success "restored backup $new.$backup -> $new"
+					or abort "could not move $new.$backup to $new"
+			end
+		end
+	end
+end
+
 ################################################################################
 # Remove old artifacts
 ################################################################################
 # Remove symlinks from older versions of the tool that might be left behind
-# These should not be files that might have been backed up
-# (if they were, those backup files need additional logic to restore backup)
 
-set oldPaths \
-	"$HOME/Library/Application Support/iTerm2/DynamicProfiles/Visor.json" \
-	"$HOME/Library/Application Support/iTerm2/DynamicProfiles/Default.json"
+info "Cleaning up artifacts from previous bootstrap invocations"
 
-for p in $oldPaths
-	if test -L $p; or test -e $p
-		rm $p
-			or abort "failed to remove old file"
-	end
-end
+cleanup_old_link "$DOTFILES/iterm2/Visor.json" "$HOME/Library/Application Support/iTerm2/DynamicProfiles/Visor.json" backup
+cleanup_old_link "$DOTFILES/iterm2/Default.json" "$HOME/Library/Application Support/iTerm2/DynamicProfiles/Default.json" backup
+cleanup_old_link "$DOTFILES/profile/zshrc.symlink" "$HOME/.zshrc" backup
+cleanup_old_link "$DOTFILES/profile/zshenv.symlink" "$HOME/.zshenv" backup
+cleanup_old_link "$DOTFILES/profile/zprofile.symlink" "$HOME/.zprofile" backup
+
+success "cleaned up artifacts"
 
 ################################################################################
 # Install Completions?

@@ -3,6 +3,10 @@ if ! type "starship" > /dev/null; then
   return
 fi
 
+if ! test "$DOTFILES_ZSH_PROMPT" = "starship"; then
+  return
+fi
+
 # Point STARSHIP_CONFIG to our dotfiles
 export STARSHIP_CONFIG="$DOTFILES/starship/config.toml"
 
