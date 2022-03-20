@@ -1,0 +1,178 @@
+{
+////////////////////////////////////////////////////////////////////////////////
+// GENERAL
+////////////////////////////////////////////////////////////////////////////////
+
+    "editor.fontFamily": "'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 11,
+    "editor.fontLigatures": true,
+    "editor.rulers": [80,120],
+    "editor.smoothScrolling": true,
+    "editor.minimap.enabled": false,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.semanticHighlighting.enabled": true,
+    "editor.semanticTokenColorCustomizations": {
+        "enabled": true,
+        "rules": {
+            "variable": "#92d7f2",
+            "variable.1": "#78a8d5",
+            "variable.2": "#9be0e6",
+            "variable.3": "#9cc2f7",
+            "variable.4": "#5ba9b8",
+            "variable.local": "#99bfcb",
+            "variable.local.1": "#c2e9f5",
+            "variable.local.2": "#add4e0",
+            "variable.local.3": "#99bfcb",
+            "variable.local.4": "#81afc5",
+            "variable.member": "#4fbbbc",
+            "variable.member.1": "#3ba7e5",
+            "variable.member.2": "#33d4d1",
+            "variable.member.3": "#4eb4f3",
+            "variable.member.4": "#6ed7d8",
+            "variable.static.member": "#66d4f6",
+            "variable.static.member.1": "#2f8fa5",
+            "variable.static.member.2": "#4ee2f4",
+            "variable.static.member.3": "#88aee1",
+            "variable.static.member.4": "#4ab9ce",
+            "parameter": "#a4beb8",
+            "parameter.1": "#7fd6c5",
+            "parameter.2": "#b8d3cd",
+            "parameter.3": "#9fcaac",
+            "parameter.4": "#a8dfd4",
+            "function": "#61cca5",
+            "function.1": "#1fe1fb",
+            "function.2": "#43c88b",
+            "function.3": "#3edbd8",
+            "function.4": "#63e5a6",
+            "function.member": "#4bd6fd",
+            "function.member.1": "#28e6cc",
+            "function.member.2": "#4eb4f3",
+            "function.member.3": "#4cccb7",
+            "function.member.4": "#4abfe8",
+            "function.static": "#9fa8e1",
+            "function.static.1": "#20d8fd",
+            "function.static.2": "#9ca6f4",
+            "function.static.3": "#5bcdf6",
+            "function.static.4": "#b4bcf7",
+            "type": "#edc158",
+            "type.1": "#f67b3e",
+            "type.2": "#ecc02b",
+            "type.3": "#e59668",
+            "type.4": "#e6a01e",
+            "enum": "#d55bc0",
+            "enum.1": "#ee4d69",
+            "enum.2": "#f570d9",
+            "enum.3": "#f7457c",
+            "enum.4": "#e44cc0",
+            "enumConstant": "#f53d8b",
+            "enumConstant.1": "#f53d8b",
+            "enumConstant.2": "#ef489e",
+            "enumConstant.3": "#d452a8",
+            "enumConstant.4": "#d452a8",
+            "macro": "#a85e16",
+            "macro.1": "#d29e3b",
+            "macro.2": "#8d630a",
+            "macro.3": "#dc803d",
+            "macro.4": "#dd9549",
+            "namespace": "#c6a94d",
+            "namespace.1": "#8c6a25",
+            "namespace.2": "#daca74",
+            "namespace.3": "#ab722f",
+            "namespace.4": "#a19435"
+        }
+    },
+
+    // Appearance
+    "workbench.colorTheme": "GitHub Dark Default",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.activityBar.visible": false,
+    "workbench.colorCustomizations": {
+        "terminal.background":"#000",
+        "terminal.foreground":"#b3b3b3",
+        // "terminal.ansiBlack":"#1D2021",
+        // "terminal.ansiBrightBlack":"#665C54",
+        // "terminal.ansiBrightBlue":"#0D6678",
+        // "terminal.ansiBrightCyan":"#48AADB",
+        // "terminal.ansiBrightGreen":"#237e02",
+        // "terminal.ansiBrightMagenta":"#8F4673",
+        // "terminal.ansiBrightRed":"#FB543F",
+        // "terminal.ansiBrightWhite":"#FDF4C1",
+        // "terminal.ansiBrightYellow":"#FAC03B",
+        // "terminal.ansiBlue":"#00a1f9",
+        "terminal.ansiCyan":"#18AABB",
+        // "terminal.ansiGreen":"#95C085",
+        // "terminal.ansiMagenta":"#8F4673",
+        // "terminal.ansiRed":"#FB543F",
+        // "terminal.ansiWhite":"#A89984",
+        "terminal.ansiYellow":"#FAC03B"
+    },
+
+    // Limit the total number of editors.
+    // Uses LRE to evict older editors i think
+    "workbench.editor.limit.value": 5,
+    "workbench.editor.limit.enabled": true,
+    "workbench.editor.enablePreviewFromCodeNavigation": true,
+
+    // Show git modified/untracked/etc as colors & badges in file explorer
+    "explorer.decorations.badges": true,
+    "explorer.decorations.colors": true,
+
+////////////////////////////////////////////////////////////////////////////////
+// TERMINAL
+////////////////////////////////////////////////////////////////////////////////
+
+    "terminal.integrated.fontFamily": "\"MesloLGLDZ Nerd Font Mono\", \"JetBrains Mono\", \"Menlo\"",
+    "terminal.integrated.fontSize": 13,
+    "terminal.integrated.scrollback": 100000,
+    "terminal.integrated.macOptionIsMeta": true,
+
+////////////////////////////////////////////////////////////////////////////////
+// GITLENS
+////////////////////////////////////////////////////////////////////////////////
+
+    "gitlens.hovers.currentLine.over": "line",
+
+////////////////////////////////////////////////////////////////////////////////
+// GOLANG
+////////////////////////////////////////////////////////////////////////////////
+
+    "[go]": {
+        "editor.formatOnSave": false
+    },
+    "gopls": {
+        "ui.semanticTokens": true
+    },
+    "go.testExplorer.showDynamicSubtestsInEditor": true,
+    "go.toolsManagement.autoUpdate": true,
+
+    // Golang Test Coverage
+    "go.coverShowCounts": true,
+    "go.coverageDecorator": {
+        "type": "gutter",
+        "coveredHighlightColor": "rgba(64,128,128,0.5)",
+        "uncoveredHighlightColor": "rgba(128,64,64,0.25)",
+        "coveredGutterStyle": "blockgreen",
+        "uncoveredGutterStyle": "blockred"
+    },
+
+////////////////////////////////////////////////////////////////////////////////
+// TYPESCRIPT
+////////////////////////////////////////////////////////////////////////////////
+
+    // Enable all inlay hints
+    "typescript.inlayHints.parameterNames.enabled": "all",
+    "typescript.inlayHints.variableTypes.enabled": true,
+    "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+    "typescript.inlayHints.parameterTypes.enabled": true,
+    "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+
+    // Language Server
+    "typescript.preferences.includePackageJsonAutoImports": "on",
+    "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+
+    // Formatting
+    "typescript.format.semicolons": "remove",
+    "[typescriptreact]": {
+        "editor.formatOnSave": true
+    }
+}

@@ -1,0 +1,1 @@
+../../vscode/install.fish
