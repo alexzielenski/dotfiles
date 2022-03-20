@@ -17,7 +17,6 @@ case Darwin
 	end
 
 	link_file $DOTFILES/iterm2/Profiles.json "$config/iterm2/AppSupport/DynamicProfiles/DotfilesDefault.json" backup
-        or abort 'failed to link visor profile'
 
 	# our profile as default from CLI
 	defaults write com.googlecode.iterm2 "Default Bookmark Guid" -string "DotfilesDefault"

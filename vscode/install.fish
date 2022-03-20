@@ -10,16 +10,13 @@ end
 
 switch (uname)
 case Darwin
-    set vscode_settings_path "$HOME/Library/Application Support/Code/User/settings.json"
+    set vscode_data_path "$HOME/Library/Application Support/Code/User"
     set code_binary "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
     if not test -f $code_binary
         set code_binary "$HOME/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
     end
 case Linux
-    set vscode_settings_path "$HOME/.config/Code/User/settings.json"
-case Windows
-    # lol does this even work
-    set vscode_settings_path "%APPDATA%\\Code\\User\\settings.json"
+    set vscode_data_path "$HOME/.config/Code/User"
 case '*'
     abort 'unrecognized system: '(uname)
 end
@@ -29,8 +26,8 @@ if not test -f $code_binary
 end
 
 # Link settings
-link_file "$DOTFILES/vscode/settings.json" "$vscode_settings_path" backup
-    or abort 'failed to link vscode settings'
+link_file "$DOTFILES/vscode/settings.json" "$vscode_data_path/settings.json" backup
+link_file "$DOTFILES/vscode/keybindings.json" "$vscode_data_path/keybindings.json" backup
 
 # Install Extensions
 function vscode_install
