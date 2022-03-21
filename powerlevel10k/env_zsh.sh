@@ -1,9 +1,10 @@
-test $interactive = 1 || exit
+test $interactive = 1 || return
 
 export POWERLEVEL9K_DISABLE_HOT_RELOAD=true
 export POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
 if ! test "$DOTFILES_ZSH_PROMPT" = "p10k"; then
-  export POWERLEVEL9K_INSTANT_PROMPT=off
   return
 fi
 

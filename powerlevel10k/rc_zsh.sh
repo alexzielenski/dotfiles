@@ -1,4 +1,4 @@
-test $interactive = 1 || exit
+test $interactive = 1 || return
 
 if ! test "$DOTFILES_ZSH_PROMPT" = "p10k"; then
   return

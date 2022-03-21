@@ -1,4 +1,4 @@
-test $interactive = 1 || exit
+test $interactive = 1 || return
 
 alias ls="exa --icons --color-scale --color=always --git --group-directories-first"
 

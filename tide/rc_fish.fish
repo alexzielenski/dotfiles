@@ -1,6 +1,4 @@
-test $interactive = 1
-    or exit
-
+test $interactive = 1 || return
 # unfortunately there is no way to selectively disable installed fisher
 # plugins
 
