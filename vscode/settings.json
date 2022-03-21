@@ -117,6 +117,16 @@
     "explorer.decorations.badges": true,
     "explorer.decorations.colors": true,
 
+    // Zen
+    "zenMode.hideLineNumbers": false,
+    "zenMode.centerLayout": true,
+    "zenMode.fullScreen": false,
+    "zenMode.hideActivityBar": true,
+    "zenMode.hideStatusBar": true,
+    "zenMode.hideTabs": true,
+    "zenMode.restore": true,
+    "zenMode.silentNotifications": true,
+
 ////////////////////////////////////////////////////////////////////////////////
 // TERMINAL
 ////////////////////////////////////////////////////////////////////////////////
