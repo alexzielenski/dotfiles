@@ -1,6 +1,7 @@
 # Hook to specify configuration for the DOTFILES rc startup scripts
 # Possible values to customize here:
-# DOTFILES_PROMPT: "p10k", "starship", "none"
+# DOTFILES_FISH_PROMPT: "tide", "starship", "none"
+# DOTFILES_ZSH_PROMPT: "p10k", "starship", "none"
 # BREW_PREFIX: path to custom brew install location.
 #
 # Only exports/aliases should be in here

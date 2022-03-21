@@ -1,3 +1,6 @@
+test $interactive = 1
+    or exit
+
 if not type -q starship
     # starship not installed. exit silently
     return

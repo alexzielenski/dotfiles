@@ -1,3 +1,5 @@
+test $interactive = 1 || exit
+
 export POWERLEVEL9K_DISABLE_HOT_RELOAD=true
 export POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 if ! test "$DOTFILES_ZSH_PROMPT" = "p10k"; then
