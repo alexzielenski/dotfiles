@@ -104,6 +104,12 @@
       "Action" : 10,
       "Text" : "[1;6A"
     },
+    "0x73-0x80000-0x1" : {
+      "Version" : 1,
+      "Action" : 21,
+      "Text" : "",
+      "Label" : ""
+    },
     "0x37-0x40000" : {
       "Action" : 11,
       "Text" : "0x1f"
@@ -128,9 +134,11 @@
       "Action" : 10,
       "Text" : "[1;5F"
     },
-    "0xf705-0x20000" : {
-      "Action" : 10,
-      "Text" : "[1;2Q"
+    "0x77-0x80000-0xd" : {
+      "Version" : 1,
+      "Action" : 20,
+      "Text" : "",
+      "Label" : ""
     },
     "0xf703-0x260000" : {
       "Action" : 10,
@@ -139,6 +147,10 @@
     "0xf700-0x220000" : {
       "Action" : 10,
       "Text" : "[1;2A"
+    },
+    "0xf705-0x20000" : {
+      "Action" : 10,
+      "Text" : "[1;2Q"
     },
     "0xf701-0x280000" : {
       "Action" : 11,
@@ -151,6 +163,12 @@
     "0x33-0x40000" : {
       "Action" : 11,
       "Text" : "0x1b"
+    },
+    "0x64-0x80000-0x2" : {
+      "Version" : 1,
+      "Action" : 21,
+      "Text" : "",
+      "Label" : ""
     },
     "0xf703-0x220000" : {
       "Action" : 10,
@@ -174,9 +192,11 @@
       "Action" : 10,
       "Text" : "[1;6D"
     },
-    "0xf729-0x40000" : {
-      "Action" : 10,
-      "Text" : "[1;5H"
+    "0x61-0x80000-0x0" : {
+      "Version" : 1,
+      "Action" : 18,
+      "Text" : "",
+      "Label" : ""
     },
     "0xf706-0x20000" : {
       "Action" : 10,
@@ -189,6 +209,10 @@
     "0xf700-0x280000" : {
       "Action" : 11,
       "Text" : "0x1b 0x1b 0x5b 0x41"
+    },
+    "0xf729-0x40000" : {
+      "Action" : 10,
+      "Text" : "[1;5H"
     },
     "0x2d-0x40000" : {
       "Action" : 11,
@@ -406,6 +430,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0
   },
+  "Initial Text" : "",
   "Screen" : -1,
   "Initial Use Transparency" : true,
   "HotKey Characters Ignoring Modifiers" : ",",
@@ -503,6 +528,7 @@
     "Green Component" : 0.9268307089805603
   },
   "BM Growl" : true,
+  "AWDS Window Directory" : "",
   "Ansi 3 Color" : {
     "Red Component" : 0.89019608497619629,
     "Color Space" : "sRGB",
@@ -529,11 +555,18 @@
   },
   "Unlimited Scrollback" : true,
   "Custom Command" : "No",
+  "AWDS Tab Option" : "Recycle",
   "HotKey Key Code" : 43,
   "Keyboard Map" : {
     "0xf700-0x260000" : {
       "Action" : 10,
       "Text" : "[1;6A"
+    },
+    "0x73-0x80000-0x1" : {
+      "Version" : 1,
+      "Action" : 21,
+      "Text" : "",
+      "Label" : ""
     },
     "0x37-0x40000" : {
       "Action" : 11,
@@ -559,9 +592,11 @@
       "Action" : 10,
       "Text" : "[1;5F"
     },
-    "0xf705-0x20000" : {
-      "Action" : 10,
-      "Text" : "[1;2Q"
+    "0x77-0x80000-0xd" : {
+      "Version" : 1,
+      "Action" : 20,
+      "Text" : "",
+      "Label" : ""
     },
     "0xf703-0x260000" : {
       "Action" : 10,
@@ -570,6 +605,10 @@
     "0xf700-0x220000" : {
       "Action" : 10,
       "Text" : "[1;2A"
+    },
+    "0xf705-0x20000" : {
+      "Action" : 10,
+      "Text" : "[1;2Q"
     },
     "0xf701-0x280000" : {
       "Action" : 11,
@@ -582,6 +621,12 @@
     "0x33-0x40000" : {
       "Action" : 11,
       "Text" : "0x1b"
+    },
+    "0x64-0x80000-0x2" : {
+      "Version" : 1,
+      "Action" : 19,
+      "Text" : "",
+      "Label" : ""
     },
     "0xf703-0x220000" : {
       "Action" : 10,
@@ -605,9 +650,11 @@
       "Action" : 10,
       "Text" : "[1;6D"
     },
-    "0xf729-0x40000" : {
-      "Action" : 10,
-      "Text" : "[1;5H"
+    "0x61-0x80000-0x0" : {
+      "Version" : 1,
+      "Action" : 18,
+      "Text" : "",
+      "Label" : ""
     },
     "0xf706-0x20000" : {
       "Action" : 10,
@@ -620,6 +667,10 @@
     "0xf700-0x280000" : {
       "Action" : 11,
       "Text" : "0x1b 0x1b 0x5b 0x41"
+    },
+    "0xf729-0x40000" : {
+      "Action" : 10,
+      "Text" : "[1;5H"
     },
     "0x2d-0x40000" : {
       "Action" : 11,
@@ -793,6 +844,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0
   },
+  "AWDS Pane Directory" : "",
   "Blur" : true,
   "Normal Font" : "MesloLGLDZNerdFontCompleteM-Regular 12",
   "Vertical Spacing" : 1,
@@ -804,6 +856,8 @@
     "Green Component" : 1
   },
   "Space" : -1,
+  "AWDS Tab Directory" : "",
+  "AWDS Pane Option" : "Recycle",
   "HotKey Window AutoHides" : true,
   "Command" : "",
   "Terminal Type" : "xterm-256color",
@@ -834,9 +888,11 @@
     "Alpha Component" : 1,
     "Green Component" : 0
   },
+  "Initial Text" : "",
   "Screen" : -2,
   "Initial Use Transparency" : true,
   "HotKey Characters Ignoring Modifiers" : ",",
+  "AWDS Window Option" : "No",
   "Non Ascii Font" : "Monaco 12",
   "Ansi 13 Color" : {
     "Red Component" : 0.85882353782653809,
