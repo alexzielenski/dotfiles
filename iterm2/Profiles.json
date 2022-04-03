@@ -96,6 +96,7 @@
     "Green Component" : 0.81960785388946533
   },
   "Unlimited Scrollback" : true,
+  "Allow Title Setting" : true,
   "Custom Command" : "No",
   "AWDS Tab Option" : "Recycle",
   "HotKey Key Code" : 43,
@@ -325,6 +326,7 @@
     "Green Component" : 0.64313727617263794
   },
   "Window Type" : 0,
+  "Allow Title Reporting" : true,
   "Use Bright Bold" : true,
   "Has Hotkey" : false,
   "HotKey Modifier Activation" : 0,
@@ -354,14 +356,6 @@
   "Name" : "DotfilesDefault",
   "Blinking Cursor" : true,
   "Guid" : "DotfilesDefault",
-  "Idle Code" : 0,
-  "Ansi 10 Color" : {
-    "Red Component" : 0.33725491166114807,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.39215686917304993,
-    "Alpha Component" : 1,
-    "Green Component" : 0.82745099067687988
-  },
   "Ansi 8 Color" : {
     "Red Component" : 0.30000001192092896,
     "Color Space" : "sRGB",
@@ -369,6 +363,14 @@
     "Alpha Component" : 1,
     "Green Component" : 0.30000001192092896
   },
+  "Ansi 10 Color" : {
+    "Red Component" : 0.33725491166114807,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.39215686917304993,
+    "Alpha Component" : 1,
+    "Green Component" : 0.82745099067687988
+  },
+  "Idle Code" : 0,
   "Badge Color" : {
     "Red Component" : 0.21960784494876862,
     "Color Space" : "sRGB",
@@ -554,6 +556,7 @@
     "Green Component" : 0.81960785388946533
   },
   "Unlimited Scrollback" : true,
+  "Allow Title Setting" : true,
   "Custom Command" : "No",
   "AWDS Tab Option" : "Recycle",
   "HotKey Key Code" : 43,
