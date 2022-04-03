@@ -27,8 +27,10 @@ else
     export MANPATH=$BREW_PREFIX/share/man:$MANPATH
 fi
 
-# Add Go-built binaries to PATH
-export PATH=$HOME/go/bin:$PATH
+if ! type "brew" > /dev/null 2>&1; then
+  echo "Could not find 'brew' in PATH."
+  exit 1
+fi
 
 if test -f "$DOTFILES/env.sh"; then
     source $DOTFILES/env.sh
