@@ -1,13 +1,15 @@
 test $interactive = 1 || return
 
-alias ls="exa --icons --color-scale --color=always --git --group-directories-first"
+alias lx='exa --icons --color-scale --color=always --git --group-directories-first'
 
-alias ll="ls -l --git"
-alias td="ll --tree --git-ignore --no-permissions --no-user --no-time --no-filesize --level"
-alias t="td 1"
-alias tt="td 2"
-alias ttt="td 3"
-alias tttt="td 4"
+
+alias l='lx -l'
+alias ll='l --git'
+alias td='ll --tree --git-ignore --no-permissions --no-user --no-time --no-filesize --level'
+alias t='td 1'
+alias tt='td 2'
+alias ttt='td 3'
+alias tttt='td 4'
 
 # extensionStyles=(
 #     '*.xyz=37;41'
@@ -20,7 +22,7 @@ alias tttt="td 4"
 # done
 
 # attrStyles=(
-#     "da=1;34"
+#     'da=1;34'
 # )
 
 # for i in $attrStyles;do
