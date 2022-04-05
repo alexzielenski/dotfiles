@@ -8,5 +8,5 @@ if not type -q rustup
 end
 
 
-replay source $DOTFILES/rust/rc.sh
+fish_add_path --prepend --global $HOME/.cargo/bin
 rustup update 1> /dev/null
