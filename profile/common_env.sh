@@ -16,6 +16,10 @@ fi
 if [[ -z "$BREW_PREFIX" ]]; then
     if type "brew" >/dev/null 2>&1; then
         export BREW_PREFIX=$(brew --prefix)
+    elif test -d /opt/homebrew; then
+	export BREW_PREFIX=/opt/homebrew
+    elif test -d /usr/local/Homebrew; then
+        export BREW_PREFIX=/usr/local/Homebrew
     fi
 fi
 
