@@ -247,5 +247,7 @@
     "typescript.format.semicolons": "remove",
     "[typescriptreact]": {
         "editor.formatOnSave": true
-    }
+    },
+    "workbench.editor.showTabs": false,
+    "workbench.statusBar.visible": false
 }
