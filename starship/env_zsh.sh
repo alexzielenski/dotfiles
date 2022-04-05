@@ -1,3 +1,5 @@
+test $interactive = 1 || return
+
 if ! type "starship" > /dev/null; then
   # starship not installed. exit silently
   return
