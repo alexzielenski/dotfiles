@@ -12,6 +12,7 @@ fi
 
 source "$DOTFILES/profile/common_env.sh"
 
+eval "$(brew shellenv)"
 
 for rcfile in $DOTFILES/*/env_zsh.sh; do
 	source $rcfile
