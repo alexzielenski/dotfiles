@@ -16,7 +16,7 @@ case Darwin
 		set config "$HOME/.config"
 	end
 
-	link_file $DOTFILES/iterm2/Profiles.json "$config/iterm2/AppSupport/DynamicProfiles/DotfilesDefault.json" backup
+	link_file $DOTFILES/iterm2/Profiles.json "$HOME/Library/Application Support/iTerm2/DynamicProfiles/DotfilesDefault.json" backup
 
 	# our profile as default from CLI
 	defaults write com.googlecode.iterm2 "Default Bookmark Guid" -string "DotfilesDefault"
