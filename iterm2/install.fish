@@ -27,4 +27,7 @@ case Darwin
 	# Set iterm theme to minimal
 	# thanks justin0a0
 	defaults write com.googlecode.iterm2 TabStyleWithAutomaticOption -int 5
+
+	# Disable inactive split pane dim
+	defaults write com.googlecode.iterm2 DimInactiveSplitPanes -int 0
 end
