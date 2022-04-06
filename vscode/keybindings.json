@@ -1,4 +1,15 @@
 [
+    // CMD+N, CMD+SHIFT+N for New File/Folder when the explorer has focus
+    {
+        "key": "cmd+n",
+        "command": "explorer.newFile",
+        "when": "explorerViewletFocus"
+    },
+    {
+        "key": "cmd+shift+n",
+        "command": "explorer.newFolder",
+        "when": "explorerViewletFocus"
+    },
     // ALT+WASD keyboad navigation of the various vscode split panes
     {
         "key": "alt+a",
