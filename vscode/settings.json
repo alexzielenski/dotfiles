@@ -113,8 +113,8 @@
     },
 
     // Appearance
-    "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
-    "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
+    "workbench.colorTheme": "Monokai Pro (Filter Machine)",
+    "workbench.iconTheme": "Monokai Pro (Filter Machine) Icons",
     "workbench.activityBar.visible": false,
     "workbench.colorCustomizations": {
         "editor.background": "#000",
@@ -180,6 +180,7 @@
     "window.restoreFullscreen": true,
     "window.newWindowDimensions": "fullscreen",
 
+    // Clean layouts
     "workbench.editor.centeredLayoutAutoResize": true,
     "workbench.statusBar.visible": false,
 
@@ -248,6 +249,6 @@
     "[typescriptreact]": {
         "editor.formatOnSave": true
     },
+    "editor.cursorSurroundingLines": 20,
     "workbench.editor.showTabs": false,
-    "workbench.statusBar.visible": false
 }
