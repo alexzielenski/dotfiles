@@ -1,14 +1,33 @@
 [
+    // CTRL+SHIFT+SPACE to show over tooltip
+    {
+        "key": "ctrl+shift+space",
+        "command": "editor.action.showHover",
+        "when": "editorFocus"
+    },
+    // SHIFT+ALT+WASD for fine search navigation
+    {
+        "key": "alt+shift+w",
+        "command": "search.action.focusPreviousSearchResult",
+        "when": "searchViewletVisible",
+    },
+
+    {
+        "key": "alt+shift+s",
+        "command": "search.action.focusNextSearchResult",
+        "when": "searchViewletVisible",
+    },
+
     // CMD+N, CMD+SHIFT+N for New File/Folder when the explorer has focus
     {
         "key": "cmd+n",
         "command": "explorer.newFile",
-        "when": "explorerViewletFocus"
+        "when": "filesExplorerFocus"
     },
     {
         "key": "cmd+shift+n",
         "command": "explorer.newFolder",
-        "when": "explorerViewletFocus"
+        "when": "filesExplorerFocus"
     },
     // ALT+WASD keyboad navigation of the various vscode split panes
     {
