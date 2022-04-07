@@ -35,7 +35,3 @@ if ! type "brew" > /dev/null 2>&1; then
   echo "Could not find 'brew' in PATH."
   exit 1
 fi
-
-if test -f "$DOTFILES/env.sh"; then
-    source $DOTFILES/env.sh
-fi
