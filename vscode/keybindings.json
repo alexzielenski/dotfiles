@@ -1,4 +1,15 @@
 [
+    // CTRL+= and CTRL+SHIFT+= to make view bigger
+    {
+        "key": "ctrl+=",
+        "command": "workbench.action.increaseViewWidth",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+shift+=",
+        "command": "workbench.action.decreaseViewWidth",
+        "when": "editorFocus"
+    },
     // CTRL+SHIFT+SPACE to show over tooltip
     {
         "key": "ctrl+shift+space",
