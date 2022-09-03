@@ -78,4 +78,17 @@ for installer in $DOTFILES/_scripts/install/*.fish
 		or abort $name
 end
 
+################################################################################
+# Add fish to list of shells and set as default
+################################################################################
+
+if ! grep (command -v fish) /etc/shells
+	warn "$(command -v fish) is not in the list of shells. You can add it with:\n\techo \"$(command -v fish)\" | sudo tee -a /etc/shells"
+end
+
+
+if test (which fish) != $SHELL
+	warn "$(command -v fish) is not the current shell. Set as default using:\n\tchsh -s $(command -v fish)"
+end
+
 success 'dotfiles installed/updated!'
