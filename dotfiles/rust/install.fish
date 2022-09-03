@@ -8,5 +8,5 @@ if not type -q rustup
 end
 
 
-# fish_add_path --prepend --global $HOME/.cargo/bin
+fish_add_path --prepend $HOME/.cargo/bin
 rustup update 1> /dev/null
