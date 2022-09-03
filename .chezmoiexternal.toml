@@ -8,7 +8,6 @@
     url = "git@github.com:asdf-vm/asdf.git"
     refreshPeriod = "168h"
 
-
 ["dotfiles/grc/dot_grc"]
     type = "git-repo"
     url = "git@github.com:garabik/grc.git"
