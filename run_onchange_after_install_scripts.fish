@@ -55,80 +55,6 @@ function test_app
 	return  1
 end
 
-function link_file -d "links a file keeping a backup"
-	set old $argv[1]
-	set new $argv[2]
-	set backup $argv[3]
-
-	if test -e $new
-		set newf (readlink $new)
-		if test "$newf" = "$old"
-			success "skipped $old"
-			return
-		else if test -l $new and not string match "^$DOTFILES/" "$newf"
-			# Don't backup symlinks which pointed into here
-			rm $new
-		else
-			mv $new $new.$backup
-				and success moved $new to $new.$backup
-				or abort "failed to backup $new to $new.$backup"
-		end
-	end
-	mkdir -p (dirname $new)
-		and ln -sf $old $new
-		and success "linked $old to $new"
-		or abort "could not link $old to $new"
-end
-
-# used to remove link files which formerly were installed by this scipt
-function cleanup_old_link
-	set old $argv[1]
-	set new $argv[2]
-	set backup $argv[3]
-
-	if test -f $old
-		abort "cleanup_old_link called with a non-broken link. this is a bug"
-	end
-
-	if test -e $new
-		# Not interested in cleaning up live links
-		return
-	end
-
-	# remove the symlink if it points into where we think it points
-	if test -L $new
-		set newf "$(readlink "$new")"
-
-		if test "$newf" = $old
-			rm $new
-				and success "removed old symlink $newf -> $old"
-				or abort "could not remove old symlink $new"
-
-			# restore backup if it exists
-			if test -e $new.$backup
-				mv $new.$backup $new
-					and success "restored backup $new.$backup -> $new"
-					or abort "could not move $new.$backup to $new"
-			end
-		end
-	end
-end
-
-################################################################################
-# Remove old artifacts
-################################################################################
-# Remove symlinks from older versions of the tool that might be left behind
-
-info "Cleaning up artifacts from previous bootstrap invocations"
-
-cleanup_old_link "$DOTFILES/iterm2/Visor.json" "$HOME/Library/Application Support/iTerm2/DynamicProfiles/Visor.json" backup
-cleanup_old_link "$DOTFILES/iterm2/Default.json" "$HOME/Library/Application Support/iTerm2/DynamicProfiles/Default.json" backup
-cleanup_old_link "$DOTFILES/profile/zshrc.symlink" "$HOME/.zshrc" backup
-cleanup_old_link "$DOTFILES/profile/zshenv.symlink" "$HOME/.zshenv" backup
-cleanup_old_link "$DOTFILES/profile/zprofile.symlink" "$HOME/.zprofile" backup
-
-success "cleaned up artifacts"
-
 ################################################################################
 # Install Completions?
 ################################################################################
@@ -141,22 +67,12 @@ mkdir -p ~/.config/fish/completions/
 # Run installers
 ################################################################################
 
-for installer in $DIR/install/*.fish
-	info $installer
+for installer in $DOTFILES/*/install.fish
+	info 'Running installer ' $installer
 	source $installer
 		and success $installer
 		or abort $installer
 end
-
-################################################################################
-# Install .symlinks
-################################################################################
-# Done last to avoid any issues if script exits early
-
-for src in $DOTFILES/*/*.symlink
-    link_file $src "$HOME/.$(basename $src .symlink)" backup
-end
-
 
 ################################################################################
 # Add fish to list of shells and set as default
@@ -166,6 +82,8 @@ if test (which fish) = $SHELL
 	success 'dotfiles installed/updated!'
 	exit 0
 end
+
+info 'Adding fish to list of shells. You pay be prompted for password.'
 
 if ! grep (command -v fish) /etc/shells
 	command -v fish | sudo tee -a /etc/shells
