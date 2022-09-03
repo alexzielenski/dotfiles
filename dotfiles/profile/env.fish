@@ -5,7 +5,8 @@
 #
 # Don't worry about realpath not being available on macOS, since fish
 # has a compatibility layer for that case.
-set -x DOTFILES "$(dirname (dirname (realpath (status --current-filename))))"
+# set -x DOTFILES "$(dirname (dirname (realpath (status --current-filename))))"
+set -x DOTFILES "$HOME/dotfiles"
 
 if status --is-interactive
     set -x interactive 1
