@@ -11,8 +11,6 @@ make install
 
 popd
 
-abort "Fzf temporarily disabled"
-
 # brew install -q fzf
 
 # set fzfPath (brew --prefix fzf)
