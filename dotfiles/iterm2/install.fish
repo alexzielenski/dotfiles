@@ -16,13 +16,12 @@ case Darwin
 		set config "$HOME/.config"
 	end
 
-	link_file $DOTFILES/iterm2/Profiles.json "$HOME/Library/Application Support/iTerm2/DynamicProfiles/DotfilesDefault.json" backup
+	# link_file $DOTFILES/iterm2/Profiles.json "$HOME/Library/Application Support/iTerm2/DynamicProfiles/DotfilesDefault.json" backup
 
 	# our profile as default from CLI
 	defaults write com.googlecode.iterm2 "Default Bookmark Guid" -string "DotfilesDefault"
 
 	# Unsure how to set iterm2 as default terminal from CLI
-	
 
 	# Set iterm theme to minimal
 	# thanks justin0a0

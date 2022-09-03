@@ -1,16 +1,9 @@
 #!/usr/bin/env fish
 
-set -x DOTFILES "$HOME/dotfiles"
+set -x DOTFILES "$(chezmoi source-path)/dotfiles"
+set -x DOTFILES_DATA "$HOME/dotfiles"
 
 echo "Boostrapping dotfiles!"
-
-################################################################################
-# Load Configuration
-################################################################################
-# Some configurable variables are stored in install_env to make it easier to
-# change settings
-
-source "$DOTFILES/install_env.fish"
 
 ################################################################################
 # Define Installation Framework
@@ -65,22 +58,24 @@ function install_package
 end
 
 ################################################################################
-# Install Completions?
+# Load Configuration
 ################################################################################
+# Some configurable variables are stored in install_env to make it easier to
+# change settings
 
-mkdir -p ~/.config/fish/completions/
-	and success 'completions'
-	or abort 'completions'
+source "$DOTFILES/install_env.fish"
+	or abort "failed to load environment"
 
 ################################################################################
 # Run installers
 ################################################################################
 
 for installer in $DOTFILES/_scripts/install/*.fish
-	info 'Running installer ' (basename $installer)
+	set name "$(basename $(dirname $installer))/$(basename $installer)"
+	info "running $name..."
 	source $installer
-		and success $installer
-		or abort $installer
+		and success $name
+		or abort $name
 end
 
 ################################################################################
@@ -92,7 +87,7 @@ if test (which fish) = $SHELL
 	exit 0
 end
 
-info 'Adding fish to list of shells. You pay be prompted for password.'
+info 'Adding fish to list of shells. You may be prompted for password.'
 
 if ! grep (command -v fish) /etc/shells
 	command -v fish | sudo tee -a /etc/shells

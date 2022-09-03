@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 # Rebuild fzf from source if necessary
-pushd $DOTFILES/fzf/dot_fzf
+pushd $DOTFILES_DATA/fzf/dot_fzf
 
 make
     or abort "failed to build fzf"

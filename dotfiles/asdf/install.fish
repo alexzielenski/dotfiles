@@ -1,6 +1,7 @@
 #!/usr/bin/env fish
 
-source $DOTFILES/asdf/dot_asdf/asdf.fish
+source $DOTFILES_DATA/asdf/dot_asdf/asdf.fish
+    or abort "failed to setup asdf"
 
 asdf plugin add python https://github.com/danhper/asdf-python.git
 asdf install python latest

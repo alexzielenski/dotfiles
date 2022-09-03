@@ -16,7 +16,9 @@ case Darwin
         set code_binary "$HOME/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
     end
 case Linux
-    set vscode_data_path "$HOME/.config/Code/User"
+    # set vscode_data_path "$HOME/.config/Code/User"
+    info "VSCode setup not yet supported for linux"
+    exit 0
 case '*'
     abort 'unrecognized system: '(uname)
 end
@@ -26,8 +28,8 @@ if not test -f $code_binary
 end
 
 # Link settings
-link_file "$DOTFILES/vscode/settings.json" "$vscode_data_path/settings.json" backup
-link_file "$DOTFILES/vscode/keybindings.json" "$vscode_data_path/keybindings.json" backup
+# link_file "$DOTFILES/vscode/settings.json" "$vscode_data_path/settings.json" backup
+# link_file "$DOTFILES/vscode/keybindings.json" "$vscode_data_path/keybindings.json" backup
 
 # Install Extensions
 function vscode_install

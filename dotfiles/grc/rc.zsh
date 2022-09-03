@@ -1,3 +1,3 @@
 #!/usr/bin/env zsh
 
-source $DOTFILES/grc/dot_grc/grc.zsh
+source $DOTFILES_DATA/grc/dot_grc/grc.zsh
