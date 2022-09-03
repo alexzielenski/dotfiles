@@ -1,13 +1,4 @@
-# Symlinked to beginning of fish's conf.d directory
-
-# This runs the risk of not working when this file is a symlink.
-# So don't make this file a symlink ok
-#
-# Don't worry about realpath not being available on macOS, since fish
-# has a compatibility layer for that case.
-# set -x DOTFILES "$(dirname (dirname (realpath (status --current-filename))))"
-set -x DOTFILES "$(chezmoi source-path)/dotfiles"
-set -x DOTFILES_DATA "$HOME/dotfiles"
+#!/usr/bin/env fish
 
 if status --is-interactive
     set -x interactive 1
