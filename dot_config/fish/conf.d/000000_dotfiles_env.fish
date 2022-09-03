@@ -1,4 +1,5 @@
-set -x DOTFILES "$(chezmoi source-path)/dotfiles"
+#set -x DOTFILES "$(chezmoi source-path)/dotfiles"
+set -x DOTFILES "$HOME/dotfiles"
 set -x DOTFILES_DATA "$HOME/dotfiles"
 
 if test -f "$DOTFILES/profile/env.fish"
