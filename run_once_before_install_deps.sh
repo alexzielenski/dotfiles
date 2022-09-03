@@ -9,8 +9,10 @@ fi
 if ! command -v brew &> /dev/null
 then
     echo "brew could not be found"
-    echo "installing brew"
-    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+    echo "you must install brew first"
+    exit 1
+    # echo "installing brew"
+    # curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
 fi
 
 if ! command -v fish &> /dev/null

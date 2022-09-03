@@ -55,6 +55,14 @@ function test_app
 	return  1
 end
 
+function install_package
+	if [ (uname) != Darwin ]
+		apt-get install $argv[1]
+	else
+		brew install $argv[1]
+    end
+end
+
 ################################################################################
 # Install Completions?
 ################################################################################
