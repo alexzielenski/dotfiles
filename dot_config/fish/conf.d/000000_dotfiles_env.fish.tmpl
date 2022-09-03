@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 set -x CHEZMOISOURCEPATH "{{.chezmoi.sourceDir}}"
-set -x DOTFILES "$(realpath $CHEZMOISOURCEPATH/../dotfiles)"
+set -x DOTFILES "$HOME/dotfiles"
 set -x DOTFILES_DATA "$HOME/dotfiles"
 
 if test -f "$DOTFILES/profile/env.fish"

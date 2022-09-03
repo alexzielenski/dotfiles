@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 
-set -x DOTFILES "$(realpath (chezmoi source-path)/../dotfiles)"
+set -x DOTFILES "$HOME/dotfiles"
 set -x DOTFILES_DATA "$HOME/dotfiles"
 
 echo "Boostrapping dotfiles!"

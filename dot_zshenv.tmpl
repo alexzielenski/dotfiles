@@ -3,7 +3,7 @@
 # an absolute path or handles symlinks (which it must for correctness).
 # export DOTFILES="$(dirname $(dirname ${${(%):-%x}:A}))"
 export CHEZMOISOURCEPATH="{{.chezmoi.sourceDir}}"
-export DOTFILES="$(dirname $CHEZMOISOURCEPATH)/dotfiles"
+export DOTFILES="$HOME/dotfiles"
 export DOTFILES_DATA="$HOME/dotfiles"
 export ZDOTDIR="$DOTFILES/zsh"
 
