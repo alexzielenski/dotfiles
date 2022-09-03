@@ -1,11 +1,8 @@
 #!/usr/bin/env fish
 
-set -l DIR (realpath (dirname (status --current-filename)))
-set -x DOTFILES (realpath (dirname $DIR))
+set -x DOTFILES "$HOME/dotfiles"
 
 echo "Boostrapping dotfiles!"
-echo $DIR
-echo $DOTFILES
 
 ################################################################################
 # Load Configuration
@@ -13,7 +10,7 @@ echo $DOTFILES
 # Some configurable variables are stored in install_env to make it easier to
 # change settings
 
-source "$DIR/install_env.fish"
+source "$DOTFILES/install_env.fish"
 
 ################################################################################
 # Define Installation Framework
