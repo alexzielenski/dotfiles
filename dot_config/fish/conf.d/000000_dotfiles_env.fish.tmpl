@@ -4,6 +4,6 @@ set -x CHEZMOISOURCEPATH "{{.chezmoi.sourceDir}}"
 set -x DOTFILES "$HOME/dotfiles"
 set -x DOTFILES_DATA "$HOME/dotfiles"
 
-if test -f "$DOTFILES/profile/env.fish"
-    source "$DOTFILES/profile/env.fish"
+if test -f "$DOTFILES/profile/bootstrap.fish"
+    source "$DOTFILES/profile/bootstrap.fish"
 end
