@@ -17,7 +17,7 @@ case Darwin
     end
 case Linux
     # set vscode_data_path "$HOME/.config/Code/User"
-    info "VSCode setup not yet supported for linux"
+    warn "VSCode setup not yet supported for linux"
     exit 0
 case '*'
     abort 'unrecognized system: '(uname)
