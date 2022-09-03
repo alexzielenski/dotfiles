@@ -5,10 +5,10 @@
 
 ["dotfiles/asdf/dot_asdf"]
     type = "git-repo"
-    url = "git@github.com:asdf-vm/asdf.git"
+    url = "https://github.com/asdf-vm/asdf.git"
     refreshPeriod = "168h"
 
 ["dotfiles/grc/dot_grc"]
     type = "git-repo"
-    url = "git@github.com:garabik/grc.git"
+    url = "https://github.com/garabik/grc.git"
     refreshPeriod = "168h"

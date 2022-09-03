@@ -4,15 +4,15 @@ echo "Installing dependencies..."
 # Install Xcode command line tools on osx
 if [ "$(uname -s)" == "Darwin" ]; then
     xcode-select --install
-fi
 
-if ! command -v brew &> /dev/null
-then
-    echo "brew could not be found"
-    echo "you must install brew first"
-    exit 1
-    # echo "installing brew"
-    # curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+    if ! command -v brew &> /dev/null
+    then
+        echo "brew could not be found"
+        echo "you must install brew first"
+        exit 1
+        # echo "installing brew"
+        # curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+    fi
 fi
 
 if ! command -v fish &> /dev/null
