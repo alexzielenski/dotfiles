@@ -1,0 +1,70 @@
+[
+    // CTRL+= and CTRL+SHIFT+= to make view bigger
+    {
+        "key": "ctrl+=",
+        "command": "workbench.action.increaseViewWidth",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+shift+=",
+        "command": "workbench.action.decreaseViewWidth",
+        "when": "editorFocus"
+    },
+    // CTRL+SHIFT+SPACE to show over tooltip
+    {
+        "key": "ctrl+shift+space",
+        "command": "editor.action.showHover",
+        "when": "editorFocus"
+    },
+    // SHIFT+ALT+WASD for fine search navigation
+    {
+        "key": "alt+shift+w",
+        "command": "search.action.focusPreviousSearchResult",
+        "when": "searchViewletVisible",
+    },
+
+    {
+        "key": "alt+shift+s",
+        "command": "search.action.focusNextSearchResult",
+        "when": "searchViewletVisible",
+    },
+
+    // CMD+N, CMD+SHIFT+N for New File/Folder when the explorer has focus
+    {
+        "key": "cmd+n",
+        "command": "explorer.newFile",
+        "when": "filesExplorerFocus"
+    },
+    {
+        "key": "cmd+shift+n",
+        "command": "explorer.newFolder",
+        "when": "filesExplorerFocus"
+    },
+    // ALT+WASD keyboad navigation of the various vscode split panes
+    {
+        "key": "alt+a",
+        "command": "workbench.action.navigateLeft"
+    },
+    {
+        "key": "alt+a",
+        "command": "workbench.action.terminal.focusPreviousPane",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+d",
+        "command": "workbench.action.navigateRight"
+    },
+    {
+        "key": "alt+d",
+        "command": "workbench.action.terminal.focusNextPane",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+w",
+        "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "alt+s",
+        "command": "workbench.action.navigateDown"
+   }
+]
