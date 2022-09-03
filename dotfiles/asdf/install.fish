@@ -1,6 +1,9 @@
 #!/usr/bin/env fish
 
-install_package asdf
+brew install asdf
+
+# ASDF should be installed in ~/.asdf/bin
+# add to path
 
 asdf plugin add python https://github.com/danhper/asdf-python.git
 asdf install python latest
