@@ -78,26 +78,4 @@ for installer in $DOTFILES/_scripts/install/*.fish
 		or abort $name
 end
 
-################################################################################
-# Add fish to list of shells and set as default
-################################################################################
-
-if test (which fish) = $SHELL
-	success 'dotfiles installed/updated!'
-	exit 0
-end
-
-info 'Adding fish to list of shells. You may be prompted for password.'
-
-if ! grep (command -v fish) /etc/shells
-	command -v fish | sudo tee -a /etc/shells
-		and success 'added fish to /etc/shells'
-		or abort 'setup /etc/shells'
-	echo
-end
-
-chsh -s (which fish)
-	and success set (fish --version) as the default shell
-	or abort 'set fish as default shell'
-
 success 'dotfiles installed/updated!'
