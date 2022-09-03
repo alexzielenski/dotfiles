@@ -1,0 +1,9 @@
+# Use cancerous zsh syntax to get current file path. I dont know enough about
+# zsh or care enough to know about this busted syntax to know if this gives
+# an absolute path or handles symlinks (which it must for correctness).
+export DOTFILES="$(dirname $(dirname ${${(%):-%x}:A}))"
+export ZDOTDIR="$DOTFILES/dotfiles/zsh"
+
+if [ -f "$ZDOTDIR/.zshenv" ];then
+    source "$ZDOTDIR/.zshenv"
+fi
