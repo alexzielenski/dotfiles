@@ -7,3 +7,7 @@ source "$DOTFILES/profile/common_nonlogin.sh"
 for rcfile in $DOTFILES/*/rc_zsh.sh; do
 	source $rcfile
 done
+
+for rcfile in $DOTFILES/*/rc.zsh; do
+	source $rcfile
+done
