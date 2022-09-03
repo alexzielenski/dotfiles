@@ -1,15 +1,15 @@
 # Symlink VSCode settings to here
 
-if test_app "Visual Studio Code"
-    info "vscode already installed"
-else
-    brew install --cask --quiet visual-studio-code
-        and success "install vscode"
-        or abort "install vscode"
-end
-
 switch (uname)
 case Darwin
+    if test_app "Visual Studio Code"
+        info "vscode already installed"
+    else
+        brew install --cask --quiet visual-studio-code
+            and success "install vscode"
+            or abort "install vscode"
+    end
+
     set vscode_data_path "$HOME/Library/Application Support/Code/User"
     set code_binary "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
     if not test -f $code_binary
