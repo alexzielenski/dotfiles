@@ -76,7 +76,7 @@ mkdir -p ~/.config/fish/completions/
 # Run installers
 ################################################################################
 
-for installer in $DOTFILES/*/install.fish
+for installer in $DOTFILES/_scripts/install/*.fish
 	info 'Running installer ' $installer
 	source $installer
 		and success $installer
