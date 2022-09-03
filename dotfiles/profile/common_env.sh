@@ -35,3 +35,7 @@ if ! type "brew" > /dev/null 2>&1; then
   echo "Could not find 'brew' in PATH."
   exit 1
 fi
+
+for rcfile in $DOTFILES/*/env.sh; do
+	source $rcfile
+done

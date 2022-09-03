@@ -20,6 +20,10 @@ for rcfile in $DOTFILES/*/env_fish.fish
 	source $rcfile
 end
 
+for rcfile in $DOTFILES/*/env.fish
+	source $rcfile
+end
+
 if test -f "$DOTFILES/env.sh"
     replay "source $DOTFILES/env.sh"
 end

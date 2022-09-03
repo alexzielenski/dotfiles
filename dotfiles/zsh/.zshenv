@@ -18,6 +18,10 @@ for rcfile in $DOTFILES/*/env_zsh.sh; do
 	source $rcfile
 done
 
+for rcfile in $DOTFILES/*/env.zsh; do
+	source $rcfile
+done
+
 if test -f "$DOTFILES/env.sh"; then
     source $DOTFILES/env.sh
 fi
