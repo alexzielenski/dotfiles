@@ -7,3 +7,4 @@ if not type -q rustup
 end
 
 rustup update 1> /dev/null
+    or abort "install rust"

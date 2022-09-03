@@ -1,0 +1,11 @@
+["dotfiles/fzf/dot_fzf"]
+    type = "git-repo"
+    url = "https://github.com/junegunn/fzf.git"
+    refreshPeriod = "168h"
+    ["dotfiles/fzf/dot_fzf".pull]
+        args = ["--depth", "1"]
+
+["dotfiles/asdf/dot_asdf"]
+    type = "git-repo"
+    url = "git@github.com:asdf-vm/asdf.git"
+    refreshPeriod = "168h"

@@ -1,6 +1,7 @@
 #!/usr/bin/env fish
 
 brew install asdf
+    or abort "install asdf"
 
 # ASDF should be installed in ~/.asdf/bin
 # add to path

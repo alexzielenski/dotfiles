@@ -1,3 +1,6 @@
 #!/usr/bin/env fish
 
-cargo install bat --locked
+if not type -q bat
+    cargo install bat --locked
+        or abort "install bat"
+end
