@@ -77,7 +77,7 @@ mkdir -p ~/.config/fish/completions/
 ################################################################################
 
 for installer in $DOTFILES/_scripts/install/*.fish
-	info 'Running installer ' $installer
+	info 'Running installer ' (basename $installer)
 	source $installer
 		and success $installer
 		or abort $installer
