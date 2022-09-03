@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 
-switch (name)
+switch (uname)
 case Darwin
     # Tap repository of fonts
     brew tap homebrew/cask-fonts
