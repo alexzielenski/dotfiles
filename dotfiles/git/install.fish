@@ -30,7 +30,7 @@ end
 
 setup_gitconfig
 
-if not type -q git-delta
+if not type -q delta
 	# Prettier git diff
 	cargo install git-delta --locked
 end
