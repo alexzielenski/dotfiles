@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 
-set -x DOTFILES "$(chezmoi source-path)/dotfiles"
+set -x DOTFILES "$(realpath (chezmoi source-path)/../dotfiles)"
 set -x DOTFILES_DATA "$HOME/dotfiles"
 
 echo "Boostrapping dotfiles!"
@@ -64,7 +64,7 @@ end
 # change settings
 
 source "$DOTFILES/install_env.fish"
-	or abort "failed to load environment"
+	or abort "failed to load environment from $DOTFILES/install_env.fish"
 
 ################################################################################
 # Run installers
