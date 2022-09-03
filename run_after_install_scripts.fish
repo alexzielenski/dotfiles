@@ -82,7 +82,7 @@ end
 # Add fish to list of shells and set as default
 ################################################################################
 
-if ! grep (command -v fish) /etc/shells
+if ! grep --silent (command -v fish) /etc/shells
 	warn "$(command -v fish) is not in the list of shells. You can add it with: echo \"$(command -v fish)\" | sudo tee -a /etc/shells"
 end
 
