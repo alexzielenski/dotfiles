@@ -83,12 +83,12 @@ end
 ################################################################################
 
 if ! grep (command -v fish) /etc/shells
-	warn "$(command -v fish) is not in the list of shells. You can add it with:\n\techo \"$(command -v fish)\" | sudo tee -a /etc/shells"
+	warn "$(command -v fish) is not in the list of shells. You can add it with: echo \"$(command -v fish)\" | sudo tee -a /etc/shells"
 end
 
 
-if test (which fish) != $SHELL
-	warn "$(command -v fish) is not the current shell. Set as default using:\n\tchsh -s $(command -v fish)"
+if test (command -v fish) != $SHELL
+	warn "$(command -v fish) is not the current shell. Set as default using: chsh -s $(command -v fish)"
 end
 
 success 'dotfiles installed/updated!'
