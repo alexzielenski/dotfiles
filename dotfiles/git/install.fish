@@ -30,5 +30,7 @@ end
 
 setup_gitconfig
 
-# Prettier git diff
-brew install -q git-delta
+if not type -q git-delta
+	# Prettier git diff
+	cargo install git-delta --locked
+end

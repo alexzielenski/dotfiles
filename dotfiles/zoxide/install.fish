@@ -1,3 +1,5 @@
 #!/usr/bin/env fish
 
-brew install -q zoxide
+if not type -q zoxide
+    cargo install zoxide --locked
+end

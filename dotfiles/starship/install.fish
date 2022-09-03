@@ -1,3 +1,5 @@
 #!/usr/bin/env fish
 
-cargo install starship
+if not type -q starship
+    cargo install starship --locked
+end

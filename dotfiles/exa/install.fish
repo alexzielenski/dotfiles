@@ -1,3 +1,5 @@
 #!/usr/bin/env fish
 
-brew install -q exa
+if not type -q exa
+    cargo install exa --locked
+end

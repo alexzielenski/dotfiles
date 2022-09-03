@@ -1,3 +1,5 @@
 #!/usr/bin/env fish
 
-brew install -q sheldon
+if not type -q sheldon
+    cargo install sheldon --locked
+end
