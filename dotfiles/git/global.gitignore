@@ -24,8 +24,3 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
-
-# K8s Specific
-/Users/alex/go/src/k8s.io/kubernetes/go.work
-/Users/alex/go/src/k8s.io/kubernetes/go.work.sum
-/Users/alex/go/src/k8s.io/kubernetes/.tool-versions
