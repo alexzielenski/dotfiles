@@ -48,15 +48,6 @@ function test_app
 	return  1
 end
 
-function install_package
-	if [ (uname) != Darwin ]
-		sudo apt-get install $argv[1] 
-			or abort "failed to install $argv[1]"
-	else
-		brew install $argv[1]
-    end
-end
-
 ################################################################################
 # Load Configuration
 ################################################################################
