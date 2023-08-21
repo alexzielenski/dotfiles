@@ -1,5 +1,8 @@
 #!/usr/bin/env fish
 
+# Make sure fzf build doesn't override our tool version
+asdf shell golang (asdf latest golang)
+
 # Rebuild fzf from source if necessary
 pushd $DOTFILES_DATA/fzf/dot_fzf
 
