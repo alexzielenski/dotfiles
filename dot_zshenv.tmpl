@@ -1,8 +1,3 @@
-# Use cancerous zsh syntax to get current file path. I dont know enough about
-# zsh or care enough to know about this busted syntax to know if this gives
-# an absolute path or handles symlinks (which it must for correctness).
-# export DOTFILES="$(dirname $(dirname ${${(%):-%x}:A}))"
-export CHEZMOISOURCEPATH="{{.chezmoi.sourceDir}}"
 export DOTFILES="$HOME/dotfiles"
 export DOTFILES_DATA="$HOME/dotfiles"
 export ZDOTDIR="$DOTFILES/zsh"
