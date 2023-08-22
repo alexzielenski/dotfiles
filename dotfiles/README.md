@@ -4,44 +4,131 @@ Repository of my dotfiles configuration for personal usage.
 
 # Usage
 
-1. Clone this repo to `~/dotfiles`
-2. In Terminal, `cd ~/dotfiles`
-3. If on new macOS install, try out `scripts/platform/macos/defaults.sh` to set
-    a few comfortable macOS defaults.
+## First Installation
 
-    Note: It is not easy to revert this
-4. Run `scripts/bootstrap.sh` to install dependencies and link dotfiles
+Set up chezmoi configured to sync with this GitHub repository
 
-# Magic
+1. Install [`chezmoi`](https://www.chezmoi.io): `sh -c "$(curl -fsLS get.chezmoi.io)"`
+2. Initialize chezmoi against this repo: `chezmoi init --apply alexzielenski`
 
-Some notes on non-obvious things going on behind the scenes in this repo
+## Update
 
-1. `scripts/bootstrap.sh` and `bootstrap.fish` run every script in
-    `scripts/install`.
-Some are symlinked from elsewhere in the repo to keep things together and tidy.
-2. Each of fish and zsh get similar environments. This is due to dotfiles trying
-    to ensure they both load consistently:
-    - Fish: `scripts/bootstrap.fish` creates the following symlinks:
-        1. `~/.config/fish/config.fish` is symlinked to `profile/fish.fish`
-        2. `~/.config/fish/conf.d/000dotfilesenv.fish` is symlinked to
-            `profile/env.fish`
-        3. this is done to make environment vars available to the fish plugins
-            which load before `config.fish`.
-    - Zsh: `~/.zshrc`, `~/.zprofile`, `~/.zshenv`, are all symlinked into
-    `profile/*.symlink` by `scripts/bootstrap.fish`
-3. Startup scripts define `$shell` as `fish` or `zsh`
-4. In each supported shell as part of startup of new shells, each subfolder will
-    have its `env.sh` run and then  `env_$shell.(sh/fish)` will
-    be run, depending on the shell.
+Pull the latest dotfiles from the repo and apply them to your machine:
 
-    This is controlled by `profile/common_env.sh`, `profile/env.fish`, and
-    `profile/zshrc.symlink`.
-5. In each supported shell at the END of startup for all environments,
-    each subfolder will have its `rc.sh` run and then `rc_$shell.(sh/fish)` will
-    be run, depending on the shell.
+1. `chezmoi update -v`
 
-    This is controlled by `profile/common_env.sh`, `profile/env.fish`, and
-    `profile/zshrc.symlink`.
+# Goals
+
+The over-arching design goals of these dotfiles is to be:
+
+1. self-contained
+    
+    All files and configurations when synced are kept nice and tidy packed into
+    `~/dotfiles` as much as possible.
+    
+    The only exception to this are symlinks placed throughout the system to 
+    point into the dotfiles folder for cases where it could not be avoided.
+
+2. exensible
+
+    Each component's installation, configuration, and sometimes installation
+    is kept within its own folder. 
+    
+    Adding a new component is as easy as adding a new folder and giving it a name. 
+    Removing a component is as easy as removing a folder.
+
+    Extension points for things like custom environment files sourced before
+    or after dependencies.
+
+3. idempotent
+
+    Installing/applying these dotfiles should always yield the same result
+    no matter how many times you apply them. 
+    
+    This is achieved by making post-install scripts aware of this requirement
+    and using chezmoi to manage application of dotfiles.
+
+# Structure
+
+## General Folder Structure
+
+In general by convention, `.zsh` files are executed only on zsh shells, `.fish` only
+in fish shells, and `.sh` are executed for all shells.
+
+```
+> dotfiles
+|-> scripts
+|---> install           # Folder of symlinks to install.fish for custom order
+|-> <component>         # Folder for each component
+|---> rc.{sh,zsh,fish}  # Sourced on shell startup.
+|---> env.{sh,zsh,fish} # Sourced on shell startup before any module's `rc`
+|---> install.fish      # Run after every `chezmoi apply`. Symlinked from scripts/install
+|-> config.sh           # Sourced on shell startup before all env
+|-> env.sh              # Sourced on shell startup before all rc, after all env
+|-> install_env.fish    # Sourced before any `install.fish` during `chezmoi apply`
+```
+> Note most components do not need to use `env`. `rc` scripts should be preferred. 
+env should be reserve for components which are dependencies of other components.
+There is no way to order execution of env files in a dependency graph, since this
+has not been needed.
+
+## Install
+
+`chezmoi` apply is the entry point for all installation steps. When applying
+files chezmoi also runs some scripts included in this repo due to their special
+names:
+
+1. `run_once_before_install_deps.sh`: Runs once after first sucessful `chezmoi apply` 
+to install bootstrap dependencies:
+    - Xcode tools (for macOS)
+    - brew, zsh, and fish since these are all dependencies to the rest of the tooling. Fish is a requirement even if your preferred shell is zsh.
+
+2. `run_after_install_scripts.fish`: Runs after files are synced each time with `chezmoi apply`
+    - Sources `install_env.fish`
+    - Executes all scripts inside `scripts/install` in alphabetical order.
+
+## Bootstrap
+
+Bootstrapping refers to the process of injecting our dotfiles early in the startup
+process of fish and zsh to make modifications to the shell environment and sourcing
+all the module's rc scripts.
+
+### Fish
+
+1. Place files on system outside of dotfiles for fish entrypoints:
+    - .config/fish/conf.d/fish_plugins: Symlink to ~/dotfiles/fisher/plugins
+        1. Sadly not configurable at time of writing
+    - .config/fish/conf.d/000000_dotfiles_env.fish:
+        1. Set `$DOTFILES` and `$DOTFILES_DATA`
+        2. Source `$DOTFILES/profile/bootstrap.fish`
+2. On startup fish runs our env file first due to its naming, and promptly runs bootstrap.fish
+with required environment variables:
+    - Set `$shell` to `fish`
+    - Runs root `config.sh`
+    - Sets up homebrew
+    - Runs all `<module>/env.sh` files
+    - Runs all `<module>/env.fish` files
+    - Runs root `env.sh`
+    - Runs all `<module>/rc.sh` files
+    - Runs all `<module>/rc.fish` files
+
+### Zsh
+
+1. Hook zsh startup using add special ~/.zshenv that:
+    - Set `$DOTFILES` and `$DOTFILES_DATA`
+    - Set `ZDOTDIR` (zsh configuration folder) to `$DOTFILES/zsh` which contains
+        - .zshenv: For sourcing env files
+        - .zshrc: For sourcing rc files
+    - Runs `$DOTFILES/zshenv`
+2. On startup `$DOTFILES/zsh/.zshenv` (sourced by our ~/.zshenv) will:
+    - Set `$shell` to `zsh`
+    - Sets up homebrew
+    - Runs all `<module>/env.sh` files
+    - Runs all `<module>/env.zsh` files
+    - Runs root `env.sh`
+3. After startup is complete, `$DOTFILES/zsh/.zshrc` is run by `zsh` due to `ZDOTDIR` override:
+    - Runs all `<module>/rc.sh` files
+    - Runs all `<module>/rc.zsh` files
 
 # Caveats
 
@@ -51,6 +138,7 @@ Some are symlinked from elsewhere in the repo to keep things together and tidy.
     from `~/dotfiles`.
 4. Doesn't touch `bash` environment, so you can use that as a fallback if these
 scripts somehow brick your terminal.
+5. Looks like sheldon now has experimental  support for fish. May move from fisher to sheldon so to have a unified package manager.
 
 # Tools Summary
 
@@ -62,15 +150,19 @@ of useful things set up.
 | Name                    | Description                                        |
 |-------------------------|----------------------------------------------------|
 | [asdf](#asdf)           | general-purpose version manager                    |
+| [brew](#brew)           | Cross platform command line tool package manager   |
 | [coreutils](#coreutils) | GNU command line utilities                         |
 | [bat](#bat)             | `cat` replacement with syntax highlighting &  more |
 | [exa](#exa)             | more readable `ls`                                 |
-| [fd](#fd)               | faster and user friendly `find` replacement        |
-| [fish](#fish)           | friendly interactive shell                         |
-| [fisher](#fisher)       | package manager for fish                           |
+| [fd](#fd)               | faster and user friendly `find` replacement         |
+| [fish](#fish)             | friendly interactive shell                         |
+| [fisher](#fisher)         | package manager for fish                            |
 | [fonts](#fonts)         | patched "nerd fonts" for use in terminal           |
-| [fzf](#fzf)             | fuzzy file finder                                  |
+| [fzf](#fzf)             | fuzzy file finder                                    |
 | [grc](#grc)             | General purpose command output colorizer           |
+| [sheldon](#sheldon)     | package manager for zsh                            |
+| [starship](#starship)   | cross platform shell prompt                        |
+| [tide](#tide)           | cross platform shell prompt                        |
 | [iterm2](#iterm2)       | Juiced up & customizable terminal for macOS        |
 | [zoxide](#zoxide)       | fast implementation of `z` for fast directory jump |
 
@@ -86,6 +178,7 @@ of useful things set up.
 | `tttt`     | `t -L=4`                                                 | exa  |
 | `gs`       | `git status -s`                                          | git  |
 | `packages` | `brew leaves \| xargs -n1 brew desc`                     | brew |
+| `tower`    | `git-tower <folder>`                                     | tower |
 
 ## Installed Plugins
 ### Fish
@@ -136,8 +229,11 @@ under one nice CLI interface which works without touching your filesystem
 The following asdf plugins are configured:
 
 | Command   | Source                                                           |
+|-----------|------------------------------------------------------------------|
+| CMake     | https://github.com/asdf-community/asdf-cmake.git                 |
 | Ruby      | https://github.com/asdf-vm/asdf-ruby.git                         |
 | Python    | https://github.com/danhper/asdf-python.git                       |
+| Golang    | https://github.com/kennyp/asdf-golang.git                        |
 
 ### coreutils
 https://formulae.brew.sh/formula/coreutils
@@ -151,6 +247,11 @@ examples of such conflicts are `ls`, `sed`, `realpath`, `echo`, `make`, `tee`,
 https://github.com/sharkdp/bat
 
 A cat(1) clone with syntax highlighting and Git integration.
+
+### brew
+https://brew.sh
+
+The Missing Package Manager for macOS (or Linux)
 
 ### exa
 
@@ -223,6 +324,25 @@ Does an OK job at colorizing the output of some generic commands.
 Fisher plugin is used to install aliases on fish.
 
 No extra zsh integration added.
+
+### Sheldon
+https://sheldon.cli.rs
+
+Sheldon is a fast, configurable, command-line tool to manage your shell plugins.
+
+Only used for zsh. Looks like it has experimental fish support.
+
+### Starship
+https://starship.rs
+
+The minimal, blazing-fast, and infinitely customizable prompt for any shell!
+
+![](https://starship.rs/demo.webm)
+
+### Tide
+https://github.com/IlanCosman/tide
+
+The ultimate Fish prompt. Like a p10k but for fish.
 
 ### iterm2
 https://iterm2.com
