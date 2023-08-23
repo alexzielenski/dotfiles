@@ -1,5 +1,7 @@
 # Litter from custom utilities
 .tool-versions
+go.work
+go.work.sum
 
 # General
 .DS_Store
