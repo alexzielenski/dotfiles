@@ -8,7 +8,7 @@ end
 
 # rg is a more user friendly grep
 if not type -q rg
-    cargo install rg --locked
+    cargo install ripgrep --locked
         or abort "install rg"
 end
 
