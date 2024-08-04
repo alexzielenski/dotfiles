@@ -124,7 +124,7 @@ with required environment variables:
     - Set `$shell` to `zsh`
     - Sets up homebrew
     - Runs all `<module>/env.sh` files
-    - Runs all `<module>/env.zsh` files
+    - Runs all `<module>/env_zsh.sh` files
     - Runs root `env.sh`
 3. After startup is complete, `$DOTFILES/zsh/.zshrc` is run by `zsh` due to `ZDOTDIR` override:
     - Runs all `<module>/rc.sh` files
