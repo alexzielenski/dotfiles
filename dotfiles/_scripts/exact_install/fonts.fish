@@ -1,12 +1,11 @@
 #!/usr/bin/env fish
 
-switch (uname)
-case Darwin
-    brew install --quiet --quiet $TerminalFontSlug
-        and success "install font $TerminalFontSlug"
-        or abort "install font $TerminalFontSlug"
-case Linux
-    warn "Can't install fonts onto linux"
-case '*'
-    abort 'unrecognized system: '(uname)
+set -l fonts \
+    "font-meslo-lg-nerd-font" \
+    "font-hack-nerd-font"
+
+for font in $fonts
+    brew install --cask --quiet --quiet $font
+        and success "install font $font"
+        or abort "install font $font"
 end
