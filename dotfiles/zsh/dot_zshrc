@@ -1,9 +1,51 @@
+# Disable NOMATCH option to avoid "no matches found" error
+setopt null_glob
+
+# export DOTFILES_PROFILE=
+# If DOTFILES_PROFILE is set, then log a profile
+if [[ -n $DOTFILES_PROFILE ]]; then
+    zmodload zsh/datetime
+    setopt PROMPT_SUBST
+    PS4='+$EPOCHREALTIME %N:%i> '
+    export logfile=$(mktemp zsh_profile.XXXXXXXX)
+    echo "Logging to $logfile"
+    exec 3>&2 2>$logfile
+    setopt XTRACE
+fi
+
+# Do nothing
+# zshrc runs for interactive shells after zprofile
+# inform helper scripts the shell without doing any crazy magic
+# alternative to this is something complicated to detect in common_env.sh
+export shell="zsh"
+
+if [[ $- == *i* ]]; then
+	interactive=1
+else
+	interactive=0
+fi
+
+source "$DOTFILES/profile/common_env.sh"
+
+for rcfile in $DOTFILES/*/env_zsh.sh; do
+	source $rcfile
+done
+
+for rcfile in $DOTFILES/*/env.zsh; do
+	source $rcfile
+done
+
+if test -f "$DOTFILES/env.sh"; then
+    source $DOTFILES/env.sh
+fi
+# Re-enable NOMATCH option
+unsetopt null_glob
+
 if [[ -o login ]]; then
   source "$DOTFILES/profile/common_login.sh"
 fi
 
 source "$DOTFILES/profile/common_nonlogin.sh"
-
 for rcfile in $DOTFILES/*/rc_zsh.sh; do
 	source $rcfile
 done
@@ -11,3 +53,10 @@ done
 for rcfile in $DOTFILES/*/rc.zsh; do
 	source $rcfile
 done
+
+if [ -n "$DOTFILES_PROFILE" ]; then
+  unsetopt XTRACE
+  exec 2>&3 3>&-
+  # Grep for .zshrc: or common_nonlogin.sh:
+  grep -F -e ".zshrc:" -e "common_nonlogin.sh:" -e ".zshenv:" -e "common_env.sh:" $logfile | awk -f /Users/zielenski/dotfiles/process.awk | sort -n -r | head
+fi

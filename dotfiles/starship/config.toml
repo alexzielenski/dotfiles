@@ -1,125 +1,71 @@
 format = """\
+$time \
+$status\
+$cmd_duration\
+$line_break\
 $username\
 $hostname\
-$localip\
-$shlvl\
-$singularity\
-$kubernetes\
 $directory\
-$vcsh\
-$hg_branch\
-$docker_context\
-$package\
-$cmake\
-$container\
-$dotnet\
-$elixir\
-$java\
-$nodejs\
-$shell\
-$pulumi\
-$purescript\
-$python\
-$rlang\
-$red\
-$ruby\
-$rust\
-$swift\
-$vlang\
-$zig\
-$nix_shell\
-$conda\
-$memory_usage\
-$aws\
-$gcloud\
-$openstack\
-$azure\
-$env_var\
-$custom\
-$sudo\
-$cmd_duration\
-$status\
-$line_break\
-$jobs\
-$battery\
-$time\
-$character"""
-
-#[\uE0B2](fg:white)\
-
-right_format = """\
+$kubernetes\
 $git_branch\
-$git_commit\
 $git_state\
-$git_metrics\
-$git_status\
+$line_break\
+$battery\
+$character
 """
 
+# right_format = """\
+# """
+
 [cmd_duration]
-format = '\[[⌛ $duration]($style)\]'
+format = '[took $duration]($style)'
 disabled = false
-min_time = 50
-
-[aws]
-disabled = true
-
-[cmake]
-disabled = true
-
-[conda]
-disabled = true
-
-[crystal]
-disabled = true
-
-[dart]
-disabled = true
+min_time = 0
+style = "dimmed white"
 
 [directory]
-read_only = " "
-truncate_to_repo = false
+read_only = " 󰌾"
+truncate_to_repo = true
 
-[docker_context]
-disabled = true
+[status]
+format = '[$symbol $status]($style)'
+style = "bold red"
+map_symbol = false
+disabled = false
 
-[dotnet]
-disabled = true
+[kubernetes]
+# Symbol to use before displaying the cluster context
+symbol = "\u2638\ufe0f "
+format = '[$symbol$context( \($namespace\))]($style) '
+# The style for the module
+style = "bold blue"
+# Only show the current namespace when namespace is not "default"
+disabled = false
 
-[elixir]
-disabled = true
+[username]
+format = "[$user]($style)@"
 
-[elm]
-disabled = true
+# ~/.config/starship.toml
 
-[env_var]
-disabled = true
+[time]
+disabled = false
+use_12hr = true
+format = '[\[$time\]]($style)'
+time_format = '%I:%M %p'
+style = "dimmed white"
 
-[erlang]
-disabled = true
-
-[gcloud]
-disabled = true
+[hostname]
+ssh_symbol = " "
 
 [git_commit]
 style = "bg: white"
 [git_state]
 style = "bg: white"
-
-[status]
-format = '\[[$symbol $status]($style)\]'
-style = "bold red"
-map_symbol = false
-disabled = false
-
-#[git_metrics]
-#style = "bg: white"
-
 [git_branch]
 symbol = " "
 format = "[$symbol$branch]($style)"
-
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218)($ahead_behind$stashed)]($style)"
 style = "cyan"
 conflicted = "​"
 untracked = "​"
@@ -128,90 +74,53 @@ staged = "​"
 renamed = "​"
 deleted = "​"
 stashed = "≡"
-
-[golang]
-disabled = true
-
-[helm]
-disabled = true
-
-[java]
-disabled = true
-
-[jobs]
-disabled = true
-
-[julia]
-disabled = true
-
-[kotlin]
-disabled = true
-
-[kubernetes]
-disabled = true
-
-[lua]
-disabled = true
-
-[nim]
-disabled = true
-
-[nix_shell]
-disabled = true
-
-[shell]
-disabled = true
-
-[nodejs]
-disabled = true
-
-[ocaml]
-disabled = true
-
-[openstack]
-disabled = true
-
-[package]
-disabled = true
-
-[perl]
-disabled = true
-
-[php]
-disabled = true
-
-[purescript]
-disabled = true
-
-[python]
-disabled = true
-
-[ruby]
-disabled = true
+#[git_metrics]
+#style = "bg: white"
 
 [rust]
-disabled = true
+symbol = "󱘗 "
 
-[scala]
-disabled = true
-
-[shlvl]
-disabled = true
-
-[singularity]
-disabled = true
-
-[swift]
-disabled = true
-
-[terraform]
-disabled = true
-
-[vagrant]
-disabled = true
-
-[zig]
-disabled = true
-
-[username]
-format = "[$user]($style)@"
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+AlmaLinux = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "

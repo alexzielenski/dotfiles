@@ -32,6 +32,7 @@
 	lineNumber = true
 [push]
 	default = simple
+	autoSetupRemote = true
 [submodule]
 	fetchJobs = 4
 # [commit]

@@ -14,8 +14,6 @@ set -x shell "fish"
 
 replay "source $DOTFILES/profile/common_env.sh"
 
-eval "$(brew shellenv)"
-
 for rcfile in $DOTFILES/*/env_fish.fish
 	source $rcfile
 end
