@@ -61,6 +61,11 @@ source "$DOTFILES/install_env.fish"
 # Run installers
 ################################################################################
 
+# Update homebrew once then disable auto-update
+# User is expected to install brew and chezmoi on their own
+brew update
+set -x HOMEBREW_NO_AUTO_UPDATE 1
+
 for installer in $DOTFILES/_scripts/install/*.fish
 	set name "$(basename $(dirname $installer))/$(basename $installer)"
 	info "running $name..."
