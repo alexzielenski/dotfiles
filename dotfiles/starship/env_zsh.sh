@@ -13,4 +13,4 @@ fi
 export STARSHIP_CONFIG="$DOTFILES/starship/config.toml"
 
 # Start prompt
-eval "$(starship init $shell)"
+source <(starship init $shell)
