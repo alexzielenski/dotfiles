@@ -1,10 +1,8 @@
-#!/usr/bin/env fish
+#!/usr/bin/env zsh
 
-# if asdf data dir not set
 if [[ -z "$ASDF_DATA_DIR" ]]; then
     # set data dir
-    set -gx ASDF_DATA_DIR "$HOME/.asdf"
-end
+    export ASDF_DATA_DIR="$HOME/.asdf"
+fi
 
-# Add asdf shims to path
-set -gx PATH $ASDF_DATA_DIR/shims $PATH
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
