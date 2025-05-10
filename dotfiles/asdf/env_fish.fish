@@ -1,6 +1,8 @@
 #!/usr/bin/env fish
 
-set -l asdfPath "$DOTFILES/asdf/dot_asdf/asdf.fish"
-if test -f $asdfPath
-    source $asdfPath
+if test -z "$ASDF_DATA_DIR"
+    # set data dir
+    export ASDF_DATA_DIR="$HOME/.asdf"
 end
+
+set -gx PATH $ASDF_DATA_DIR/shims $PATH

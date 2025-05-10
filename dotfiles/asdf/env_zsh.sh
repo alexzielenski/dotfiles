@@ -1,7 +1,10 @@
 #!/usr/bin/env fish
 
-asdfPath="$DOTFILES/asdf/dot_asdf/asdf.sh"
+# if asdf data dir not set
+if [[ -z "$ASDF_DATA_DIR" ]]; then
+    # set data dir
+    set -gx ASDF_DATA_DIR "$HOME/.asdf"
+end
 
-if test -f "$asdfPath"; then
-    source $asdfPath
-fi
+# Add asdf shims to path
+set -gx PATH $ASDF_DATA_DIR/shims $PATH

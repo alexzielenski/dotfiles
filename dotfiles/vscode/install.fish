@@ -33,9 +33,10 @@ end
 
 # Install Extensions
 function vscode_install
+    info "installing vscode extension: $argv[2] ($argv[1])"
     $code_binary --install-extension $argv[1] 1> /dev/null
-        and success "install extension: $argv[2] ($argv[1])"
-        or abort "install extension: $argv[2] ($argv[1])"
+        and success "$argv[2]"
+        or abort "$argv[2]"
 end
 
 vscode_install "ms-vscode-remote.vscode-remote-extensionpack" "Remote Extension Pack"

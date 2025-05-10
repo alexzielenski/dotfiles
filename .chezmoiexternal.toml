@@ -3,11 +3,6 @@
     url = "https://github.com/junegunn/fzf.git"
     refreshPeriod = "168h"
 
-["dotfiles/asdf/dot_asdf"]
-    type = "git-repo"
-    url = "https://github.com/asdf-vm/asdf.git"
-    refreshPeriod = "168h"
-
 ["dotfiles/grc/dot_grc"]
     type = "git-repo"
     url = "https://github.com/garabik/grc.git"

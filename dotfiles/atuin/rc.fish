@@ -1,4 +1,3 @@
-if test -n "$ATUIN_CONFIG_DIR"
-    set -gx ATUIN_CONFIG_DIR $DOTFILES/atuin/ATUIN_CONFIG_DIR
+if command -v atuin > /dev/null
+    atuin init fish | source
 end
-atuin init fish | source
