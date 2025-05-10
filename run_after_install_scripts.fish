@@ -5,6 +5,17 @@ set -x DOTFILES_DATA "$HOME/dotfiles"
 
 echo "Boostrapping dotfiles!"
 
+# Comma separated list of installer names to run
+set FILTER_NAMES $argv[1]
+
+if test -z "$FILTER_NAMES"
+	echo "No filter names provided, running all installers"
+else
+	echo "Running only the following installers: $FILTER_NAMES"
+	# Split the filter names into an array
+	set FILTER_NAMES (string split ',' $FILTER_NAMES)
+end
+
 ################################################################################
 # Define Installation Framework
 ################################################################################
@@ -68,6 +79,14 @@ set -x HOMEBREW_NO_AUTO_UPDATE 1
 
 for installer in $DOTFILES/_scripts/install/*.fish
 	set name "$(basename $(dirname $installer))/$(basename $installer)"
+
+	if test -n "$FILTER_NAMES"
+		if not contains $name $FILTER_NAMES
+			info "skipping $dname at $name"
+			continue
+		end
+	end
+
 	info "running $name..."
 	source $installer
 		and success $name

@@ -6,7 +6,8 @@
 
 # Rebuild fzf from source if necessary
 pushd $DOTFILES_DATA/fzf/dot_fzf
-
+asdf set golang latest
+asdf reshim golang
 make
     or abort "failed to build fzf"
 
