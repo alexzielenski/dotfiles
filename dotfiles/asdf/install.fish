@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 
-brew install --quiet asdf 
+brew install --quiet asdf
     or abort "failed to install asdf"
 
 # if unset data dir
