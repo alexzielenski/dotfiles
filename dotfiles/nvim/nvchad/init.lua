@@ -31,8 +31,18 @@ require("lazy").setup({
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
-
+dofile(vim.g.base46_cache .. "semantic_tokens")
+dofile(vim.g.base46_cache .. "lsp")
+dofile(vim.g.base46_cache .. "dap")
+ 
 require "nvchad.autocmds"
+
+
+vim.api.nvim_create_autocmd("CmdlineLeave", {
+  callback = function()
+    vim.cmd [[ echon ' ']]
+  end,
+})
 
 vim.schedule(function()
   require "mappings"
