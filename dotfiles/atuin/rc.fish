@@ -4,8 +4,12 @@ if command -v atuin > /dev/null
     set -x ATUIN_CONFIG_DIR $DOTFILES/atuin/config
 end
 
-# # Ctrl+R full screen
-# bind \cr 'atuin search -i --inline-height 0'
+function atuin_fullscreen_search
+    atuin search --inline-height 0
+end
+bind \cr atuin_fullscreen_search  # Ctrl+R
 
-# # Up arrow inline
-# bind \e\[A 'atuin search --inline'
+function atuin_inline_search
+    atuin search --inline-height 10
+end
+bind \eA atuin_inline_search      # Up arrow
