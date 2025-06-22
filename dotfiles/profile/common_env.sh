@@ -24,7 +24,7 @@ if test -z "$BREW_PREFIX"; then
     fi
 fi
 
-source /dev/stdin < <($BREW_PREFIX/bin/brew shellenv 2>/dev/null)
+source /dev/stdin < <($BREW_PREFIX/bin/brew shellenv sh 2>/dev/null)
 
 for rcfile in $DOTFILES/*/env.sh; do
 	source $rcfile
