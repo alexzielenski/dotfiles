@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  chezmoi:
+    runs-on: macos-latest
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: 1
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare home directory
+        run: |
+          temp_home=$(mktemp -d)
+          echo "HOME=$temp_home" >> "$GITHUB_ENV"
+          echo "CHEZMOI_SOURCE_DIR=$GITHUB_WORKSPACE" >> "$GITHUB_ENV"
+          echo "CHEZMOI_DEST_DIR=$temp_home" >> "$GITHUB_ENV"
+
+      - name: Install dependencies
+        run: |
+          brew install chezmoi fish
+
+      - name: Configure chezmoi
+        run: |
+          mkdir -p "$HOME/.config/chezmoi"
+          cat <<EOC > "$HOME/.config/chezmoi/chezmoi.toml"
+sourceDir = "$CHEZMOI_SOURCE_DIR"
+destinationDir = "$CHEZMOI_DEST_DIR"
+EOC
+
+      - name: Apply dotfiles with chezmoi
+        run: |
+          chezmoi apply --verbose --include=files --include=symlinks
+
+      - name: Verify zsh login prompt
+        run: |
+          output=$(zsh -lic 'exit')
+          echo "$output"
+          grep "Welcome to zsh!" <<< "$output"
+
+      - name: Verify fish login prompt
+        run: |
+          output=$(fish -lic 'exit')
+          echo "$output"
+          grep "Welcome to fish!" <<< "$output"
