@@ -33,6 +33,10 @@ jobs:
             "destinationDir = \"$CHEZMOI_DEST_DIR\"" \
             > "$HOME/.config/chezmoi/chezmoi.toml"
 
+      - name: Expose repository dotfiles directory
+        run: |
+          ln -sfn "$CHEZMOI_SOURCE_DIR/dotfiles" "$HOME/dotfiles"
+
       - name: Apply dotfiles with chezmoi
         run: |
           chezmoi apply --verbose --include=files --include=symlinks
