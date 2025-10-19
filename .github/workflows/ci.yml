@@ -19,8 +19,6 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          path: ${{ steps.prepare_home.outputs.temp_home }}/.local/share/chezmoi
 
       - name: Install dependencies
         run: |
@@ -30,7 +28,7 @@ jobs:
         env:
           HOME: ${{ steps.prepare_home.outputs.temp_home }}
         run: |
-          chezmoi apply --verbose
+          chezmoi -S "$GITHUB_WORKSPACE" apply --verbose
 
       - name: Verify zsh login prompt
         env:
