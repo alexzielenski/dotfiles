@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  chezmoi:
+    runs-on: macos-latest
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: 1
+    steps:
+      - name: Prepare home directory
+        id: prepare_home
+        run: |
+          temp_home=$(mktemp -d)
+          printf 'temp_home=%s\n' "$temp_home" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          brew install chezmoi fish
+
+      - name: Apply dotfiles with chezmoi
+        env:
+          HOME: ${{ steps.prepare_home.outputs.temp_home }}
+        run: |
+          chezmoi -S "$GITHUB_WORKSPACE" apply --verbose
+
+      - name: Verify zsh login prompt
+        env:
+          HOME: ${{ steps.prepare_home.outputs.temp_home }}
+        run: |
+          output=$(zsh -lic 'exit')
+          echo "$output"
+          grep "Welcome to zsh!" <<< "$output"
+
+      - name: Verify fish login prompt
+        env:
+          HOME: ${{ steps.prepare_home.outputs.temp_home }}
+        run: |
+          output=$(fish -lic 'exit')
+          echo "$output"
+          grep "Welcome to fish!" <<< "$output"
